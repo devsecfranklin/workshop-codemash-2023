@@ -53,17 +53,13 @@ function macos() {
   brew cleanup
   brew upgrade
   echo -e "${CYAN}Setting up autools for MacOS (this may take a while...)${NC}"
-  brew install libtool
+  # brew install libtool
   brew install gawk
   if [ ! -f "./config.status" ]; then
     echo -e "${CYAN}Running libtool/autoconf/automake...${NC}"
-    glibtoolize
+    # glibtoolize
     aclocal -I config
-    if [ -d "aclocal" ]; then
-      autoreconf
-    else
-      autoreconf -i
-    fi
+    autoreconf -i
     automake -a -c --add-missing
     brew install az
   else
@@ -85,14 +81,11 @@ function debian {
 
 function redhat() {
   if [ ! -f "./config.status" ]; then
-    libtoolize
-    if [ -d "aclocal" ]; then
-      autoreconf
-    else
-      mkdir aclocal
-      aclocal -I config
-      autoreconf -i
-    fi
+    # libtoolize
+    if [ ! -d "aclocal" ]; then mkdir aclocal; fi
+    mkdir aclocal
+    aclocal -I config
+    autoreconf -i
     automake -a -c --add-missing
     ./configure
   else

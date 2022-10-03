@@ -13,6 +13,7 @@ python:
 	( \
 		source _build/bin/activate; \
 		_build/bin/python -m pip install --upgrade pip; \
+		_build/bin/python -m pip install -r lab/requirements.txt; \
 		_build/bin/python -m pip install -r src/requirements.txt; \
 	)
 
