@@ -13,19 +13,32 @@
 \vspace{2mm}
 
 \justifying
-This lab is meant to be a fun way to learn more about some modern software development technologies.
+This workshop is meant to be a fun way to learn more about some modern software development technologies. You don't need to have a deep understanding of all parts. Rather, you can follow along from end to end and choose to focus more deeply on any part that holds your attention.
+
+\justifying
+A high level overview of the learning path is as follows:
 
 \begin{raggedright}
 	\begin{enumerate}
-		\item 
+		\item Review the Python source for the bot.
+		\item Configure Google Cloud account, service user, etc.
+		\item Set up GitHub with a bot account, dev token, and webhook.
+		\item Configure Terraform and deploy the bot.
+		\item Test it out.
+		\item Explore possibilities for extending the functionality.
 	\end{enumerate}
 \end{raggedright}
 \vspace{2mm}
 
+\section{\label{sec:Python}Python}
+
+\justifying
+The Python code is meant to run as a ``Cloud Function'' in GCP. This is a cost-effective way to run code without deploying cloud infrastructure such as dedicated host instances or other cloud infrastructure that must be maintained. We get to run our code and let Google take care of the rest.
+
 \section{\label{sec:Terraform}Terraform}
 
 
-\section{\label{sec:Python}Python}
+
 
 % backmatter: appendix, bibliography, index, postface
 % \backmatter{}
