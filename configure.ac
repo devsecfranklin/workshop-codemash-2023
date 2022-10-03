@@ -13,7 +13,6 @@ AC_CONFIG_COMMANDS([franklin-build],
 AC_CONFIG_FILES([
     Makefile
     lab/Makefile
-    slides/Makefile
 ])
 
 dnl le python

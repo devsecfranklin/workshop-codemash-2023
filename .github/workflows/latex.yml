@@ -1,4 +1,4 @@
-name: Build Kerberos LaTeX document
+name: Build LaTeX documents
 on:
   - pull_request
 
