@@ -35,6 +35,7 @@ variable "gh_secret_token" {
 }
 
 variable "cloud_function_repo" {
+  description = "Directory to save the zip file to."
   type    = string
   default = "."
 }
