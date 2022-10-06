@@ -1,5 +1,5 @@
-google-cloud-logging
-google-cloud-secret-manager
+google - cloud - logging
+google - cloud - secret - manager
 requests
 flask
 PyGithub
