@@ -14,7 +14,14 @@
 \vspace{2mm}
 
 \justifying
-This workshop is meant to be a fun way to learn more about some modern software development technologies. You don't need to have a deep understanding of all parts. Rather, you can follow along from end to end and choose to focus more deeply on any part that holds your attention.
+This workshop is meant to be a fun way to learn more about some modern software development technologies.
+You don't need to have a deep understanding of all parts. Rather, you can follow along from end to end
+and choose to focus more deeply on any part that holds your attention.
+
+\justifying
+Yes, there are easier ways to do many of the things in this document. It's OK to use those easier ways.
+Doing things ``the hard way'' may give deeper understanding and valuable insight. You have to show
+up to the gym every day and put in the work if you want the results. Same with this.
 
 \subsection{\label{sec:outline}Outline}
 
@@ -23,6 +30,7 @@ A high level overview of the learning path is as follows:
 
 \begin{raggedright}
 	\begin{enumerate}
+		\item Preparation
 		\item Review the Python source for the bot.
 		\item Configure Google Cloud account, service user, etc.
 		\item Set up GitHub with a bot account, dev token, and webhook.
@@ -92,20 +100,27 @@ It illustrates the relationship between components mentioned in Table \ref{Autot
 \section{\label{sec:bot}Bot Setup}
 
 
-\subsection{\label{sec:ghbot}Github Account}
-
 \justifying
 \begin{raggedright}
 	\begin{enumerate}
+		\item Create a new Github account using the second e-mail address.
 		\item As your ``main user'', invite the bot user ``bot-account'' as a collaborator on the repo.
+		\item Add the Github action to the repository.
 	\end{enumerate}
 \end{raggedright}
 \vspace{2mm}
 
+\justifying
+You can add a cool icon to the bot account Github profile.
+
+\markdownInput{code/cloudbotyaml.md}
+
 \section{\label{sec:Python}Python}
 
 \justifying
-The Python code is meant to run as a ``Cloud Function'' in GCP. This is a cost-effective way to run code without deploying cloud infrastructure such as dedicated host instances or other cloud infrastructure that must be maintained. We get to run our code and let Google take care of the rest.
+The Python code is meant to run as a ``Cloud Function'' in GCP. This is a cost-effective way to run code
+without deploying cloud infrastructure such as dedicated host instances or other cloud infrastructure
+that must be maintained. We get to run our code and let Google take care of the rest.
 
 \section{\label{sec:Terraform}Terraform}
 
