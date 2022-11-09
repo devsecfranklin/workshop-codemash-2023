@@ -6,6 +6,8 @@
 
 # local build artifacts
 _build/
+lab/_markdown_workshop-codemash-2023/
+lab/workshop-codemash-2023.markdown.lua
 
 # Core latex/pdflatex auxiliary files:
 *.aux
@@ -299,6 +301,9 @@ config.log
 COPYING
 INSTALL
 libtool
+config.in
+po/
+stamp-h1
 
 # This is a minimal list, OK to add things per repo
 # mac specific

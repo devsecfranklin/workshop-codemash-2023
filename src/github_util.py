@@ -69,9 +69,7 @@ class GithubHelper:
     def add_commit_comment(self, g, comment):
         """Add a comment to a GitHub Commit."""
         logger.info(
-            "Cloudbot adding comment on repo %s to PR %s",
-            self.repo,
-            self.pr_number,
+            "Cloudbot adding comment on repo %s to PR %s", self.repo, self.pr_number,
         )
 
         repo = g.get_repo(str(self.repo))

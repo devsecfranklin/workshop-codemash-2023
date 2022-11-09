@@ -3,7 +3,10 @@ AC_PREREQ([2.69])
 AC_INIT(workshop-codemash-2023, 0.1, frank378@gmail.com, https://github.com/devsecfranklin/workshop-codemash-2023)
 AC_CONFIG_MACRO_DIR(config/m4)
 AC_CONFIG_AUX_DIR(config)
+AC_CONFIG_HEADERS(config)
 AM_INIT_AUTOMAKE(foreign)
+dnl AM_GNU_GETTEXT(external)
+dnl AM_GNU_GETTEXT_VERSION(0.21)
 
 LT_INIT
 
