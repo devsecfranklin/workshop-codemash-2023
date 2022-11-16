@@ -1,6 +1,14 @@
 CLOCAL_AMFLAGS = -I config/m4 -I aclocal
 ACLOCAL_AMFLAGS = -I config/m4 -I aclocal
 
+if PYTHON
+PYTHON := "python"
+else
+PYTHON := "python3"
+endif
+
+.PHONY: terraform
+
 clean: ## Clean up your mess
 	rm -rf _build *.egg-info
 	@find . -name '*.pyc' | xargs rm -rf
@@ -9,13 +17,23 @@ clean: ## Clean up your mess
 .PHONY: docker 
 docker:
 	docker build -t gcr.io/gcp-gcs-pso/cloudbot-dev .
+	docker run -it -v $(pwd):/home/franklin gcr.io/gcp-gcs-pso/cloudbot-dev:latest bash
 
-python:
-	@$(PY39) -m venv _build
+lab:
+	@echo "Found Python version $(PY39)"
+	@$(PYTHON) -m venv _build
 	( \
 		source _build/bin/activate; \
 		_build/bin/python -m pip install --upgrade pip; \
 		_build/bin/python -m pip install -r lab/requirements.txt; \
+	)
+
+python:
+	echo "Found Python version $(PY39)"
+	@$(PYTHON) -m venv _build
+	( \
+		source _build/bin/activate; \
+		_build/bin/python -m pip install --upgrade pip; \
 		_build/bin/python -m pip install -r src/requirements.txt; \
 	)
 

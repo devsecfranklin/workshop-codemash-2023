@@ -14,7 +14,6 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install apt-utils -y && \
     apt-get install gcc -y && \
-    cp tests/configure.ac /home/${USER} && \
     bash bootstrap.sh
 
 ##################
@@ -35,4 +34,3 @@ RUN addgroup --gid 9001 engr && \
 USER ${USER} 
 
 RUN python3 -m pip install lolcat
-

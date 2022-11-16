@@ -48,7 +48,6 @@ A high level overview of the learning path is as follows:
 \justifying
 There are some requirements that must be met to successfully complete this workshop. This workshop was developed in a Linux environment, with some testing on Macintosh. You should use a similar environment, or you can use the containerized development environment if you wish. This may be a good option for folks who don't have access to a reliable Linux environment, or may be having issues getting the proper packages installed.
 
-
 \begin{raggedright}
     \begin{itemize}
         \item You will need to \href{https://cloud.google.com/sdk/docs/install}{install the Google Cloud SDK}.
@@ -61,6 +60,11 @@ There are some requirements that must be met to successfully complete this works
     \end{itemize}
 \end{raggedright}
 \vspace{2mm}
+
+\subsection{\label{sec:docker}Docker (Optional)}
+
+\justifying
+You may wish to install Docker to build the dev container. There are directions on \href{how to install Docker on their website}{https://docs.docker.com/get-docker/}.
 
 \subsection{\label{sec:autotools}GNU Autotools}
 
@@ -108,7 +112,7 @@ issues configuring these, wish to run in a different Operating System, etc.
 \begin{raggedright}
     \begin{enumerate}
         \item Clone the Github repository from \href{https://github.com/devsecfranklin/workshop-codemash-2023}{https://github.com/devsecfranklin/workshop-codemash-2023}.
-        \item In the newly created ``workshop-codemash-2023'' directory, execute the ``bootstrap.sh'' script.
+        \item In the newly created ``workshop-codemash-2023'' directory, execute the ``bootstrap.sh'' script. Note that on Macintosh this will update your existing brew installation.
         \item Next, run the ``./configure'' command.
         \item Finally, run the ``make python'' command to prepare the necessary Python modules.
     \end{enumerate}

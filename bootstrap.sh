@@ -29,12 +29,27 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 MY_OS="unknown"
-CONTAINER=false
+[ -z "${CONTAINER}" ] || CONTAINER=false
+[ -z "${DOCUMENTATION}" ] || DOCUMENTATION=false
+
+while getopts 'hl' OPTION; do
+  case "$OPTION" in
+    l)
+      echo -e "${YELLOW}Building the lab documentation${NC}"
+      DOCUMENTATION=true
+      ;;
+    ?)
+      echo -e "${LGREEN}script usage: ${0} [-l] ${NC}" >&2
+      exit 1
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
 
 # Check if we are inside a docker container
 function check_docker() {
   if [ -f /.dockerenv ]; then
-    ${CONTAINER}=true
+    CONTAINER=true
   fi
 }
 
@@ -101,7 +116,7 @@ function run_libtoolize() {
 
 function run_aclocal() {
   echo -e "${LBLUE}Checking aclocal version...${NC}"
-  acl_ver=`/usr/bin/aclocal --version | awk '{print $NF; exit}'`
+  acl_ver=`aclocal --version | awk '{print $NF; exit}'`
   echo "    $acl_ver"
 
   echo -e "${CYAN}Running aclocal...${NC}"
@@ -176,15 +191,19 @@ function macos() {
   echo -e "${CYAN}Updating brew for MacOS (this may take a while...)${NC}"
   brew cleanup
   brew upgrade
+
   echo -e "${CYAN}Setting up autools for MacOS (this may take a while...)${NC}"
   # brew install libtool
+  brew install automake
   brew install gawk
+  if [ "${DOCUMENTATION}" = true ]; then brew install mactex; fi
+
   if [ ! -f "./config.status" ]; then
     echo -e "${CYAN}Running libtool/autoconf/automake...${NC}"
     # glibtoolize
-    aclocal -I config
+    run_aclocal
     autoreconf -i
-    automake -a -c --add-missing
+    run_automake
     #brew install az
   else
     echo -e "${CYAN}Your system is already configured. (Delete config.status to reconfigure)${NC}"
@@ -248,7 +267,14 @@ function redhat() {
 
 function main() {
   check_docker
+
+  # Copy in a different configure.ac that includes documentation
+  if [ "${DOCUMENTATION}" = true ]; then cp lab/configure.ac .; fi 
+  
+  # Attempt to determine OS
   detect_os
+
+  #
   #check_installed doxygen
 
   if [ ! -d "config/m4" ]; then mkdir -p config/m4; fi
@@ -266,6 +292,9 @@ function main() {
     install_debian
     debian
   fi
+
+  # put the configure.ac file back the way it was
+  if [ "${DOCUMENTATION}" = true ]; then git restore configure.ac; fi
 }
 
 main
