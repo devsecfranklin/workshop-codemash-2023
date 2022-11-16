@@ -46,9 +46,10 @@ while getopts 'hl' OPTION; do
 done
 shift "$(($OPTIND -1))"
 
+# Check if we are inside a docker container
 function check_docker() {
   if [ -f /.dockerenv ]; then
-    CONTAINER=1
+    CONTAINER=true
   fi
 }
 
@@ -215,7 +216,8 @@ function install_debian() {
   #declare -a  Packages=( "doxygen" "gawk" "doxygen-latex" "automake" )
   declare -a Packages=( "git" "make" "automake" )
 
-  if [ ${CONTAINER} -eq 0 ]; then
+  # Container package installs will fail unless you do an initial update, the upgrade is optional
+  if [ "${CONTAINER}" = true ]; then
     apt-get update && apt-get upgrade -y
   fi
 
@@ -225,7 +227,9 @@ function install_debian() {
     # echo -e "${LBLUE}Checking for ${i}: ${PKG_OK}${NC}"
     if [ "" = "${PKG_OK}" ]; then
       echo -e "${LBLUE}Installing ${i} since it is not found.${NC}"
-      if [ ${CONTAINER} -eq 0 ]; then
+
+      # If we are in a container there is no sudo in Debian
+      if [ "${CONTAINER}" = true ]; then
         sudo apt-get --yes install ${i}
       else
         apt-get install ${i} -y

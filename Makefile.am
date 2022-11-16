@@ -14,6 +14,7 @@ clean: ## Clean up your mess
 	@find . -name '*.pyc' | xargs rm -rf
 	@find . -name '__pycache__' | xargs rm -rf
 
+.PHONY: docker 
 docker:
 	docker build -t gcr.io/gcp-gcs-pso/cloudbot-dev .
 
@@ -35,6 +36,7 @@ python:
 		_build/bin/python -m pip install -r src/requirements.txt; \
 	)
 
+.PHONY: terraform
 terraform:
 	curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
 	chmod +x terraform-install.sh
