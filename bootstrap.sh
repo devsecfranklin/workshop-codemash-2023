@@ -35,11 +35,11 @@ DOCUMENTATION=false
 while getopts 'hl' OPTION; do
   case "$OPTION" in
     l)
-      echo "lab documentation"
-      ${DOCUMENTATION}=true
+      echo -e "${YELLOW}Building the lab documentation${NC}"
+      DOCUMENTATION=true
       ;;
     ?)
-      echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
+      echo -e "${LGREEN}script usage: ${0} [-l] ${NC}" >&2
       exit 1
       ;;
   esac
@@ -115,7 +115,7 @@ function run_libtoolize() {
 
 function run_aclocal() {
   echo -e "${LBLUE}Checking aclocal version...${NC}"
-  acl_ver=`/usr/bin/aclocal --version | awk '{print $NF; exit}'`
+  acl_ver=`aclocal --version | awk '{print $NF; exit}'`
   echo "    $acl_ver"
 
   echo -e "${CYAN}Running aclocal...${NC}"
@@ -193,8 +193,9 @@ function macos() {
 
   echo -e "${CYAN}Setting up autools for MacOS (this may take a while...)${NC}"
   # brew install libtool
+  brew install automake
   brew install gawk
-  brew install mactex
+  if [ "${DOCUMENTATION}" = true ]; then brew install mactex; fi
 
   if [ ! -f "./config.status" ]; then
     echo -e "${CYAN}Running libtool/autoconf/automake...${NC}"
@@ -262,8 +263,14 @@ function redhat() {
 
 function main() {
   check_docker
+
+  # Copy in a different configure.ac that includes documentation
   if [ "${DOCUMENTATION}" = true ]; then cp lab/configure.ac .; fi 
+  
+  # Attempt to determine OS
   detect_os
+
+  #
   #check_installed doxygen
 
   if [ ! -d "config/m4" ]; then mkdir -p config/m4; fi
@@ -281,6 +288,9 @@ function main() {
     install_debian
     debian
   fi
+
+  # put the configure.ac file back the way it was
+  if [ "${DOCUMENTATION}" = true ]; then git restore configure.ac; fi
 }
 
 main
