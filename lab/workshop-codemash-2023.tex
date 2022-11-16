@@ -25,45 +25,44 @@ up to the gym every day and put in the work if you want the results. Same with t
 
 \subsection{\label{sec:outline}Outline}
 
+add a diagram here that shows the overall workflow
+
 \justifying
 A high level overview of the learning path is as follows:
 
 \begin{raggedright}
-	\begin{enumerate}
-		\item Preparation
+	\begin{itemize}
+		\item Prerequisites
 		\item Review the Python source for the bot.
 		\item Configure Google Cloud account, service user, etc.
 		\item Set up GitHub with a bot account, dev token, and webhook.
 		\item Configure Terraform and deploy the bot.
 		\item Test it out.
 		\item Explore possibilities for extending the functionality.
-	\end{enumerate}
+	\end{itemize}
 \end{raggedright}
 \vspace{2mm}
 
-\section{\label{sec:preparation}Preparation}
+\section{\label{sec:preparation}Prerequisites}
 
 \justifying
-There are some requirements that must be met to successfully complete this workshop.
+There are some requirements that must be met to successfully complete this workshop. This workshop was developed in a Linux environment, with some testing on Macintosh. You should use a similar environment, or you can use the containerized development environment if you wish. This may be a good option for folks who don't have access to a reliable Linux environment, or may be having issues getting the proper packages installed.
 
-\href{https://cloud.google.com/sdk/docs/install}{Install the Google Cloud SDK}
 
-\subsection{\label{sec:account}Google Cloud Account}
+\begin{raggedright}
+    \begin{itemize}
+        \item You will need to \href{https://cloud.google.com/sdk/docs/install}{install the Google Cloud SDK}.
+        \item You will need a Google Cloud account. Here are some instructions to \href{https://cloud.google.com/free/}{set up a free Google Cloud account}
+        \item You need two e-mail accounts for this workshop.
+        \begin{itemize}
+            \item The first is used for your personal (existing) Github account.
+            \item The second e-mail address will be used to create a Github account for your bot.
+	   \end{itemize}
+    \end{itemize}
+\end{raggedright}
+\vspace{2mm}
 
-\justifying
-
-\href{https://cloud.google.com/free/}{Set up a free Google Cloud account}
-
-\subsection{\label{sec:ghaccount}Github Accounts}
-
-\justifying
-You will need two e-mail accounts for this workshop. The first is used for your personal Github
-account. If you already have a Github account, you should be all set.
-
-\justifying
-The second e-mail address will be used to create a Github account for your bot.
-
-\section{\label{sec:autotools}GNU Autotools}
+\subsection{\label{sec:autotools}GNU Autotools}
 
 \justifying
 GNU Autotools have been included in the code base for the workshop. Autotools are a well-maintained set of Open Source tools with a gentle learning curve and are included in the distribution of many Open Source packages that we all rely on daily, at least indirectly, and often unknowingly.
@@ -97,7 +96,38 @@ It illustrates the relationship between components mentioned in Table \ref{Autot
 \end{figure}
 \vspace{2mm}
 
-\section{\label{sec:bot}Bot Setup}
+\section{\label{sec:dev-env}Set up Your Development Environment}
+
+\justifying
+The dev environment can be configured using the ``bootstrap.sh'' script and GNU autotools. This process should work well in Linux or Mac environments. There is also a development container that you can build if you are having
+issues configuring these, wish to run in a different Operating System, etc.
+
+\subsection{\label{sec:dev-linux}Option 1: Set up on Linux and Mac}
+
+\justifying
+\begin{raggedright}
+    \begin{enumerate}
+        \item Clone the Github repository from \href{https://github.com/devsecfranklin/workshop-codemash-2023}{https://github.com/devsecfranklin/workshop-codemash-2023}.
+        \item In the newly created ``workshop-codemash-2023'' directory, execute the ``bootstrap.sh'' script.
+        \item Next, run the ``./configure'' command.
+        \item Finally, run the ``make python'' command to prepare the necessary Python modules.
+    \end{enumerate}
+\end{raggedright}
+\vspace{2mm}
+
+\subsection{\label{sec:dev-container}Option 2: Set up the dev Container}
+
+\justifying
+\begin{raggedright}
+    \begin{enumerate}
+        \item Create a new Github account using the second e-mail address.
+        \item As your ``main user'', invite the bot user ``bot-account'' as a collaborator on the repo.
+        \item Add the Github action to the repository.
+    \end{enumerate}
+\end{raggedright}
+\vspace{2mm}
+
+\section{\label{sec:github}Github Setup}
 
 
 \justifying
@@ -123,6 +153,17 @@ without deploying cloud infrastructure such as dedicated host instances or other
 that must be maintained. We get to run our code and let Google take care of the rest.
 
 \section{\label{sec:Terraform}Terraform}
+
+\section{\label{sec:next}Going a Bit Further}
+
+\justifying
+This optional section describes how you can connect your Cloud Function to your Kubernetes cluster to extend the functionality even more.
+
+\section{\label{sec:cleanup}Cleanup}
+
+\justifying
+
+docker system prune
 
 
 \clearpage
