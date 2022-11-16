@@ -17,9 +17,10 @@ clean: ## Clean up your mess
 .PHONY: docker 
 docker:
 	docker build -t gcr.io/gcp-gcs-pso/cloudbot-dev .
+	docker run -it -v $(pwd):/home/franklin gcr.io/gcp-gcs-pso/cloudbot-dev:latest bash
 
 lab:
-	echo "Found Python version $(PY39)"
+	@echo "Found Python version $(PY39)"
 	@$(PYTHON) -m venv _build
 	( \
 		source _build/bin/activate; \
