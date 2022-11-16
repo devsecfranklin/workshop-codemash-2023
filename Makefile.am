@@ -8,6 +8,9 @@ clean: ## Clean up your mess
 	@find . -name '*.pyc' | xargs rm -rf
 	@find . -name '__pycache__' | xargs rm -rf
 
+docker:
+	docker build -t gcr.io/gcp-gcs-pso/cloudbot-dev .
+
 python:
 	@$(PY39) -m venv _build
 	( \
