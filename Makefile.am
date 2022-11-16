@@ -10,6 +10,7 @@ clean: ## Clean up your mess
 
 docker:
 	docker build -t gcr.io/gcp-gcs-pso/cloudbot-dev .
+	docker run -it -v $(pwd):/home/franklin gcr.io/gcp-gcs-pso/cloudbot-dev:latest bash
 
 python:
 	@$(PY39) -m venv _build
