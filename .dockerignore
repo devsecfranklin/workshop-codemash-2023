@@ -7,6 +7,7 @@ lab/
 _build/
 lab/_markdown_workshop-codemash-2023/
 lab/workshop-codemash-2023.markdown.lua
+terraform-install.sh
 
 # Core latex/pdflatex auxiliary files:
 *.aux
