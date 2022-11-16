@@ -16,5 +16,11 @@
         "ms-python.python",
         // you big cyberpunk, you
         "Endormi.2077-theme",
+        // Support Terraform
+        "ms-azuretools.vscode-azureterraform",
+        // Github
+        "GitHub.vscode-pull-request-github",
+        // vi will never die
+        "vscodevim.vim",
     ]
 }

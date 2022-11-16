@@ -29,7 +29,22 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 MY_OS="unknown"
-CONTAINER=0
+CONTAINER=false
+DOCUMENTATION=false
+
+while getopts 'hl' OPTION; do
+  case "$OPTION" in
+    l)
+      echo "lab documentation"
+      ${DOCUMENTATION}=true
+      ;;
+    ?)
+      echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
+      exit 1
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
 
 function check_docker() {
   if [ -f /.dockerenv ]; then
@@ -175,15 +190,18 @@ function macos() {
   echo -e "${CYAN}Updating brew for MacOS (this may take a while...)${NC}"
   brew cleanup
   brew upgrade
+
   echo -e "${CYAN}Setting up autools for MacOS (this may take a while...)${NC}"
   # brew install libtool
   brew install gawk
+  brew install mactex
+
   if [ ! -f "./config.status" ]; then
     echo -e "${CYAN}Running libtool/autoconf/automake...${NC}"
     # glibtoolize
-    aclocal -I config
+    run_aclocal
     autoreconf -i
-    automake -a -c --add-missing
+    run_automake
     #brew install az
   else
     echo -e "${CYAN}Your system is already configured. (Delete config.status to reconfigure)${NC}"
@@ -244,6 +262,7 @@ function redhat() {
 
 function main() {
   check_docker
+  if [ "${DOCUMENTATION}" = true ]; then cp lab/configure.ac .; fi 
   detect_os
   #check_installed doxygen
 
