@@ -14,6 +14,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install apt-utils -y && \
     apt-get install gcc -y && \
+	ls -la; \
     cp /home/${USER}/lab/configure.ac /home/${USER} && \
     bash bootstrap.sh
 
