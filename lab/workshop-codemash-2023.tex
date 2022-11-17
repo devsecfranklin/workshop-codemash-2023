@@ -17,6 +17,7 @@
 This workshop is meant to be a fun way to learn more about some modern software development technologies.
 You don't need to have a deep understanding of all parts. Rather, you can follow along from end to end
 and choose to focus more deeply on any part that holds your attention.
+\vspace{2mm}
 
 \justifying
 Yes, there are easier ways to do many of the things in this document. It's OK to use those easier ways.
@@ -33,15 +34,17 @@ A high level overview of the learning path is as follows:
 \begin{raggedright}
 	\begin{itemize}
 		\item Prerequisites
+		\item Set up a development environment.
+		\item Github setup.
 		\item Review the Python source for the bot.
-		\item Configure Google Cloud account, service user, etc.
-		\item Set up GitHub with a bot account, dev token, and webhook.
 		\item Configure Terraform and deploy the bot.
 		\item Test it out.
 		\item Explore possibilities for extending the functionality.
 	\end{itemize}
 \end{raggedright}
 \vspace{2mm}
+
+\subsection{\label{sec:interesting}Some Interesting Examples}
 
 \section{\label{sec:preparation}Prerequisites}
 
@@ -52,6 +55,8 @@ There are some requirements that must be met to successfully complete this works
     \begin{itemize}
         \item You will need to \href{https://cloud.google.com/sdk/docs/install}{install the Google Cloud SDK}.
         \item You will need a Google Cloud account. Here are some instructions to \href{https://cloud.google.com/free/}{set up a free Google Cloud account}
+        \item You should have Python 3.9 or newer installed.
+        \item You should have Terraform 1.x installed.
         \item You need two e-mail accounts for this workshop.
         \begin{itemize}
             \item The first is used for your personal (existing) Github account.
@@ -64,12 +69,17 @@ There are some requirements that must be met to successfully complete this works
 \subsection{\label{sec:docker}Docker (Optional)}
 
 \justifying
-You may wish to install Docker to build the dev container. There are directions on \href{how to install Docker on their website}{https://docs.docker.com/get-docker/}.
+You may wish to install Docker to build the dev container. The official Docker installation directions \href{can be found on their website}{https://docs.docker.com/get-docker/}.
 
 \subsection{\label{sec:autotools}GNU Autotools}
 
 \justifying
-GNU Autotools have been included in the code base for the workshop. Autotools are a well-maintained set of Open Source tools with a gentle learning curve and are included in the distribution of many Open Source packages that we all rely on daily, at least indirectly, and often unknowingly.
+At the risk of introducing greater complexity, GNU Autotools have been included in the code base for the workshop. Autotools
+are a well-maintained set of Open Source tools with a gentle learning curve and are included in the distribution of many Open
+Source packages that we all rely on daily, at least indirectly, and often unknowingly. While it may be possible to complete this workshop
+without at least learning how to configure and execute the tools in your environment, you will derive significantly less enjoyment
+in doing so.
+\vspace{2mm}
 
 \justifying
 The list of tools for using this Autotools configuration paradigm is show in Table \ref{Autotools}.
@@ -83,7 +93,7 @@ The list of tools for using this Autotools configuration paradigm is show in Tab
 		automake & Generates a system-specific Makefile based on Makefile.am template    \\\hline
 		make  &   X    \\\hline
 	\end{tabular}
-	\caption{Tools used in this project}
+	\caption{GNU tools used in this project}
 	\label{Autotools}
 \end{table}
 \vspace{2mm}
@@ -100,10 +110,11 @@ It illustrates the relationship between components mentioned in Table \ref{Autot
 \end{figure}
 \vspace{2mm}
 
-\section{\label{sec:dev-env}Set up Your Development Environment}
+\section{\label{sec:dev-env}Set up A Development Environment}
 
 \justifying
-The dev environment can be configured using the ``bootstrap.sh'' script and GNU autotools. This process should work well in Linux or Mac environments. There is also a development container that you can build if you are having
+The dev environment can be configured using the ``bootstrap.sh'' script and GNU autotools. This process should work
+well in Linux or Mac environments. There is also a development container that you can build if you are having
 issues configuring these, wish to run in a different Operating System, etc.
 
 \subsection{\label{sec:dev-linux}Option 1: Set up on Linux and Mac}
@@ -140,6 +151,7 @@ issues configuring these, wish to run in a different Operating System, etc.
 		\item Create a new Github account using the second e-mail address.
 		\item As your ``main user'', invite the bot user ``bot-account'' as a collaborator on the repo.
 		\item Add the Github action to the repository.
+		\item Configure a webhook to connect Github to Cloud Function.
 	\end{enumerate}
 \end{raggedright}
 \vspace{2mm}
@@ -149,14 +161,70 @@ You can add a cool icon to the bot account Github profile.
 
 \markdownInput{code/cloudbotyaml.md}
 
+\subsection{\label{sec:webhook}Github Webhook Configuration}
+
+\justifying
+There are three parts to configuring the webhook in Github. 
+
+\justifying
+\begin{raggedright}
+	\begin{itemize}
+		\item Set the payload URL.
+		\item Select the correct content type from the drop down.
+		\item Add the webhook secret.
+	\end{itemize}
+\end{raggedright}
+\vspace{2mm}
+
+\justifying
+Note that the webhook secret is different from the two Github secrets we will set in the next section.
+
+\begin{figure}[ht]
+	\includegraphics[width=12cm]{images/webhook1.png}
+	\caption{Payload URL, Content type, and Webhook Secret.}
+	\label{wh1}
+\end{figure}
+\vspace{2mm}
+
+
+\begin{figure}[ht]
+	\includegraphics[width=12cm]{images/webhook2.png}
+	\caption{Webhook trigger events.}
+	\label{wh2}
+\end{figure}
+\vspace{2mm}
+
+\subsection{\label{sec:gh_secrets}Github Secrets Configuration}
+
+\justifying
+The image in Figure \ref{gh_secrets} shows where to set the secrets in your Github repository. These should be named to match the values given in the GH action YAML file.
+\vspace{2mm}
+
+\begin{figure}[ht]
+	\includegraphics[width=12cm]{images/gh_secrets.png}
+	\caption{Setting repository secrets.}
+	\label{gh_secrets}
+\end{figure}
+\vspace{2mm}
+
 \section{\label{sec:Python} The Python Application}
 
 \justifying
-The Python code is meant to run as a ``Cloud Function'' in GCP. This is a cost-effective way to run code
-without deploying cloud infrastructure such as dedicated host instances or other cloud infrastructure
-that must be maintained. We get to run our code and let Google take care of the rest.
+The Python code is meant to run as a ``Cloud Function'' in GCP. This is a cost-effective way to run code becuase you can have
+your application hosted without provisioning and maintaining any supporting infrastructure. We get to focus our code and let Google
+take care of the rest.
 
-\section{\label{sec:Terraform}Terraform}
+\justifying
+Our Python is reliant on a set of modules that are declared in the ``src/requirements.txt'' file.
+\verbatiminput{../src/requirements.txt}
+
+\justifying
+There are a few other Python requirements files in the project that serve other purposes including testing and security.
+
+
+\section{\label{sec:tf}Terraform}
+
+\section{\label{sec:test}Testing}
 
 \section{\label{sec:next}Going a Bit Further}
 
@@ -178,6 +246,6 @@ docker system prune
 \clearpage
 % \nocite{*}
 \bibliographystyle{plain}
-\bibliography{mybib.bib}
+\bibliography{mybib}
 
 \end{document}

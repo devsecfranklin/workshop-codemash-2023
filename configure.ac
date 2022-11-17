@@ -24,5 +24,9 @@ dnl LDFLAGS="$LDFLAGS -l$PY39"
 AC_SUBST(PY39, python$PYTHON_VERSION)
 AM_CONDITIONAL([PYTHON], [which python])
 
+dnl terraform
+AC_CHECK_PROG(TF_CHECK,terraform,yes)
+AS_IF([test x"$TF_CHECK" != x"yes"], [AC_MSG_ERROR([Please install Terraform before configuring.])])
+
 AC_OUTPUT
 
