@@ -8,5 +8,6 @@ clean:
 		fi ; \
 	done
 
-paper: 
+paper:
+	bibtex workshop-codemash-2023
 	latexmk -pdf -file-line-error -interaction=nonstopmode -synctex=1 -shell-escape workshop-codemash-2023
