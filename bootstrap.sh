@@ -29,32 +29,19 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 MY_OS="unknown"
-[ -z "${CONTAINER}" ] || CONTAINER=false
-[ -z "${DOCUMENTATION}" ] || DOCUMENTATION=false
-
-while getopts 'hl' OPTION; do
-  case "$OPTION" in
-    l)
-      echo -e "${YELLOW}Building the lab documentation${NC}"
-      DOCUMENTATION=true
-      ;;
-    ?)
-      echo -e "${LGREEN}script usage: ${0} [-l] ${NC}" >&2
-      exit 1
-      ;;
-  esac
-done
-shift "$(($OPTIND -1))"
+CONTAINER=false
+DOCUMENTATION=false
 
 # Check if we are inside a docker container
 function check_docker() {
   if [ -f /.dockerenv ]; then
+    echo -e "${LGREEN}Building in container...${NC}"
     CONTAINER=true
   fi
 }
 
 function run_autopoint() {
-  echo "Checking autopoint version..."
+  echo -e "${CYAN}Checking autopoint version...${NC}"
   ver=`autopoint --version | awk '{print $NF; exit}'`
   ap_maj=`echo $ver | sed 's;\..*;;g'`
   ap_min=`echo $ver | sed -e 's;^[0-9]*\.;;g'  -e 's;\..*$;;g'`
@@ -230,9 +217,9 @@ function install_debian() {
 
       # If we are in a container there is no sudo in Debian
       if [ "${CONTAINER}" = true ]; then
-        sudo apt-get --yes install ${i}
+        apt-get --yes install ${i}
       else
-        apt-get install ${i} -y
+        sudo apt-get install ${i} -y
       fi
     fi
   done
