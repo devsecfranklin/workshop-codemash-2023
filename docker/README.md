@@ -1,6 +1,8 @@
 # Docker
 
 ```sh
-docker build -t gcr.io/gcp-gcs-pso/cloudbot-dev .
-docker run -it -v $(pwd):/home/franklin gcr.io/gcp-gcs-pso/cloudbot-dev:latest bash
+sudo sysctl -w net.ipv6.conf.all.forwarding=1
+echo $CR_PAT | docker login ghcr.io -u devsecfranklin --password-stdin
+docker build -t ghcr.io/devsecfranklin/cloudbot-dev .
+docker run -it -v $(pwd):/home/franklin ghcr.io/devsecfranklin/cloudbot-dev:latest bash
 ```

@@ -14,20 +14,6 @@ clean: ## Clean up your mess
 	@find . -name '*.pyc' | xargs rm -rf
 	@find . -name '__pycache__' | xargs rm -rf
 
-.PHONY: docker 
-docker:
-	docker build -t gcr.io/gcp-gcs-pso/cloudbot-dev .
-	docker run -it -v $(pwd):/home/franklin gcr.io/gcp-gcs-pso/cloudbot-dev:latest bash
-
-lab:
-	@echo "Found Python version $(PY39)"
-	@$(PYTHON) -m venv _build
-	( \
-		source _build/bin/activate; \
-		_build/bin/python -m pip install --upgrade pip; \
-		_build/bin/python -m pip install -r lab/requirements.txt; \
-	)
-
 python:
 	echo "Found Python version $(PY39)"
 	@$(PYTHON) -m venv _build
