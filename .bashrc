@@ -4,7 +4,5 @@ GO111MODULE="auto"
 GOPATH=/home/`whoami`/go
 PATH=$GOPATH/bin:~/bin:~/.local/bin:$PATH
 force_color_prompt=yes
-#make go
-make python
 alias cat="~/.local/bin/lolcat"
 lolcat ~/tests/art.txt
