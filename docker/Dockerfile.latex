@@ -7,11 +7,13 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -q && \
     apt-get install -y -qq --no-install-recommends \
         ca-certificates  \
+        chktex \
         curl \
         ghostscript \
         git \
         gnuplot \
         imagemagick \
+        lacheck \
         make \
         jq \
         qpdf \

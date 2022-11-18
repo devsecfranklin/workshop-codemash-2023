@@ -1,6 +1,7 @@
 *.code-workspace
 .DS_Store
 .nfs*
+.git/
 
 # local build artifacts
 _build/

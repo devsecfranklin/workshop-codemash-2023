@@ -16,6 +16,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install apt-utils -y && \
     apt-get install gcc -y && \
+	pwd && ls -la && \
     bash bootstrap.sh
 
 ##################
@@ -33,6 +34,8 @@ RUN addgroup --gid 9001 engr && \
     	"${USER}"; \
 	chown -R ${USER}:engr /home/${USER}
 
-USER ${USER} 
+RUN   rm -rf /var/lib/apt/lists/*
+
+USER ${USER}
 
 RUN python3 -m pip install lolcat

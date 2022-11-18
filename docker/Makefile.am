@@ -2,7 +2,9 @@ CLOCAL_AMFLAGS = -I config/m4 -I aclocal
 ACLOCAL_AMFLAGS = -I config/m4 -I aclocal
 
 build:
+	docker-compose build cloudbot-dev
 	docker build -t ghcr.io/devsecfranklin/cloudbot-dev .
+	docker tag $(shell docker images -q | head -1) ghcr.io/devsecfranklin/cloudbot-dev:latest
 	docker push ghcr.io /devsecfranklin/cloudbot-dev:latest
 
 latex:
