@@ -33,7 +33,7 @@ RUN addgroup --gid 9001 engr && \
     	"${USER}"; \
 	chown -R ${USER}:engr /home/${USER}; \
 	usermod -a -G sudo ${USER};\
-	echo "${USER}ALL=(ALL) NOPASSWD" >> /etc/sudoers
+	echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER ${USER}
 
