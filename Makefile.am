@@ -15,7 +15,7 @@ clean: ## Clean up your mess
 	@find . -name '__pycache__' | xargs rm -rf
 
 python:
-	echo "Found Python version $(PY39)"
+	@echo "Found Python version $(PY39)"
 	@$(PYTHON) -m venv _build
 	( \
 		source _build/bin/activate; \
