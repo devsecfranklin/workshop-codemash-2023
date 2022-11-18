@@ -1,9 +1,10 @@
 version: '3'
 services:
   cloudbot-dev:
+    image: cloudbot-dev
     build:
       context: ..
       dockerfile: docker/Dockerfile
     container_name: cloudbot-dev
     volumes:
-      - .:/home/franklin
+      - ./:/home/franklin

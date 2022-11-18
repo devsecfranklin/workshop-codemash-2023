@@ -1,12 +1,6 @@
 CLOCAL_AMFLAGS = -I config/m4 -I aclocal
 ACLOCAL_AMFLAGS = -I config/m4 -I aclocal
 
-if PYTHON
-PYTHON := "python"
-else
-PYTHON := "python3"
-endif
-
 .PHONY: terraform
 
 clean: ## Clean up your mess
@@ -27,6 +21,7 @@ python:
 terraform:
 	curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
 	chmod +x terraform-install.sh
+	bash terraform install 1.3.5
 
 test: 
 	@$(PY39) -m venv _build

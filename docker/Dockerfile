@@ -2,7 +2,7 @@
 
 FROM python:3.11-slim-bullseye
 
-LABEL maintainer="Franklin D <franklin@bitsmasher.net>"
+LABEL org.opencontainers.image.authors="Franklin D <franklin@bitsmasher.net>"
 LABEL org.opencontainers.image.source="https://github.com/devsecfranklin/workshop-codemash-2023"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -10,14 +10,13 @@ ARG USER="franklin"
 
 WORKDIR /home/${USER}
 
-COPY . /home/${USER}
+COPY ./ /home/${USER}
 
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install apt-utils -y && \
-    apt-get install gcc -y && \
-	pwd && ls -la && \
-    bash bootstrap.sh
+    apt-get install gcc sudo -y && \
+    bash /home/${USER}/bootstrap.sh
 
 ##################
 # Set up my dude #
@@ -32,9 +31,9 @@ RUN addgroup --gid 9001 engr && \
     	--no-create-home \
     	--uid "1000" \
     	"${USER}"; \
-	chown -R ${USER}:engr /home/${USER}
-
-RUN   rm -rf /var/lib/apt/lists/*
+	chown -R ${USER}:engr /home/${USER}; \
+	usermod -a -G sudo ${USER};\
+	echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER ${USER}
 
