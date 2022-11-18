@@ -6,4 +6,4 @@ services:
       dockerfile: docker/Dockerfile
     container_name: cloudbot-dev
     volumes:
-      - .:/home/franklin
+      - ./:/home/franklin

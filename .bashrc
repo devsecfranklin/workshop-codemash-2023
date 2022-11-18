@@ -7,4 +7,4 @@ force_color_prompt=yes
 #make go
 make python
 alias cat="~/.local/bin/lolcat"
-lolcat tests/art.txt
+lolcat ~/tests/art.txt

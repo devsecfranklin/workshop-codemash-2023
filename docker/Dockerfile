@@ -10,14 +10,13 @@ ARG USER="franklin"
 
 WORKDIR /home/${USER}
 
-COPY . /home/${USER}
+COPY ./ /home/${USER}
 
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install apt-utils -y && \
     apt-get install gcc -y && \
-	pwd && ls -la && \
-    bash bootstrap.sh
+    bash /home/${USER}/bootstrap.sh
 
 ##################
 # Set up my dude #
@@ -33,8 +32,6 @@ RUN addgroup --gid 9001 engr && \
     	--uid "1000" \
     	"${USER}"; \
 	chown -R ${USER}:engr /home/${USER}
-
-RUN   rm -rf /var/lib/apt/lists/*
 
 USER ${USER}
 
