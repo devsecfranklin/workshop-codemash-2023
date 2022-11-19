@@ -10,10 +10,13 @@ build: .check-env-vars
 	docker tag $(shell docker images -q | head -1) ghcr.io/devsecfranklin/cloudbot-dev:latest
 
 latex:
-	docker build -t ghcr.io/devsecfranklin/latex -f Dockerfile.latex .
+	docker-compose build cloudbot-latex
+	@echo "Tagging image:  $(shell docker images -q | head -1)"
+	docker tag $(shell docker images -q | head -1) ghcr.io/devsecfranklin/cloudbot-latex:latest
 
 push:
 	docker push ghcr.io/devsecfranklin/cloudbot-dev:latest
+	docker push ghcr.io/devsecfranklin/cloudbot-latex:latest
 
 run: 
 	docker run -it ghcr.io/devsecfranklin/cloudbot-dev:latest bash
