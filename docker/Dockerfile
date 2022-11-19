@@ -8,30 +8,30 @@ LABEL org.opencontainers.image.source="https://github.com/devsecfranklin/worksho
 ENV DEBIAN_FRONTEND noninteractive
 ARG USER="franklin"
 
-WORKDIR /home/${USER}
+WORKDIR /workspaces/workshop-codemash-2023
 
-COPY ./ /home/${USER}
+COPY ./ /workspaces/workshop-codemash-2023
 
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install apt-utils -y && \
     apt-get install gcc sudo -y && \
-    bash /home/${USER}/bootstrap.sh
+    bash ${WORKDIR}/bootstrap.sh
 
 ##################
 # Set up my dude #
 ##################
-RUN if [ -f "/home/${USER}/.bash_history" ]; then chmod 666 /home/${USER}/.bash_history; fi
+RUN if [ -f "${WORKDIR}/.bash_history" ]; then chmod 666 ${WORKDIR}/.bash_history; fi
 RUN addgroup --gid 9001 engr && \
 	adduser \
     	--disabled-password \
     	--gecos "" \
-    	--home "/home/${USER}" \
+    	--home "${WORKDIR}" \
     	--ingroup "engr" \
     	--no-create-home \
     	--uid "1000" \
     	"${USER}"; \
-	chown -R ${USER}:engr /home/${USER}; \
+	chown -R ${USER}:engr ${WORKDIR}; \
 	usermod -a -G sudo ${USER};\
 	echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 

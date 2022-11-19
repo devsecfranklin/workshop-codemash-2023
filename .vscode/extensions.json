@@ -8,10 +8,6 @@
         "esbenp.prettier-vscode",
         // Nix support
         "bbenoist.Nix",
-        // GraphViz (for use w/LaTeX docs)
-        "joaompinto.vscode-graphviz",
-        // LaTeX workshop
-        "James-Yu.latex-workshop",
         // Python Support
         "ms-python.python",
         // you big cyberpunk, you
