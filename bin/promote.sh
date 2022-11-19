@@ -1,8 +1,8 @@
 #!/bin/bash
 
-declare -a my_files =[ "workshop-codemash-2023.pdf" ".vscode/*" ]
+declare -a my_files=( "workshop-codemash-2023.pdf" ".vscode/*" )
 
 git checkout workshop
 #for i in "${my_files[@]}"; do git checkout workshop "$i"; done
-git checkout develop temp*
-#git commit -m ""
+git checkout develop tempfile
+
