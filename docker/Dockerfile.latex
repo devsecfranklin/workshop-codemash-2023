@@ -27,10 +27,9 @@ RUN apt-get update -q && \
         vim-tiny && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /texlive
+WORKDIR /workspaces/workshop-codemash-2023
 
-COPY install-texlive.sh .
-COPY texlive.profile .
+COPY ./ /workspaces/workshop-codemash-2023
 
 RUN chmod +x install-texlive.sh && \
     ./install-texlive.sh
