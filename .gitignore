@@ -309,6 +309,7 @@ stamp-h1
 .DS_Store
 .ansible
 .bash_history
+*.bkp
 # don't check storage creds into GH
 .boto
 .cache
