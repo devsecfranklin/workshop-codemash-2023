@@ -19,4 +19,3 @@ cd install-tl
 
 cd ..
 rm -fr install-tl
-

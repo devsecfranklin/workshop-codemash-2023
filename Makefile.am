@@ -21,7 +21,7 @@ python:
 terraform:
 	curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
 	chmod +x terraform-install.sh
-	bash terraform install 1.3.5
+	bash terraform-install 1.3.5
 
 test: 
 	@$(PY39) -m venv _build

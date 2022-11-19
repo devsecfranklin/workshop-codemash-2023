@@ -5,6 +5,4 @@ GOPATH=/home/`whoami`/go
 PATH=$GOPATH/bin:~/bin:~/.local/bin:$PATH
 force_color_prompt=yes
 alias cat="~/.local/bin/lolcat"
-lolcat ~/tests/art.txt
-sudo apt install -y curl vim-tiny unzip
-make terraform
+lolcat ~/tests/art2.txt
