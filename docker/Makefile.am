@@ -16,6 +16,7 @@ latex:
 
 push:
 	docker push ghcr.io/devsecfranklin/cloudbot-dev:latest
+	docker push ghcr.io/devsecfranklin/cloudbot-latex:latest
 
 run: 
 	docker run -it ghcr.io/devsecfranklin/cloudbot-dev:latest bash

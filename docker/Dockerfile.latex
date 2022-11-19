@@ -31,8 +31,7 @@ WORKDIR /workspaces/workshop-codemash-2023
 
 COPY ./ /workspaces/workshop-codemash-2023
 
-RUN chmod +x install-texlive.sh && \
-    ./install-texlive.sh
+RUN chmod +x docker/install-texlive.sh && docker/install-texlive.sh
 
 WORKDIR /data
 

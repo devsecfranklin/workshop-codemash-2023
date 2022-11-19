@@ -85,7 +85,8 @@ make VSCode a great platform for our workshop is the idea that \href{https://cod
 \subsection{\label{sec:repo}Github Repository Setup}
 
 \justifying
-There are two significant branches in the Github repository. The live session will be based on the \href{https://github.com/devsecfranklin/workshop-codemash-2023/tree/workshop}{workshop branch of the repository}.
+There are two significant branches in the Github repository, named ``workshop'' and ``develop''. The live session will be based on the \href{https://github.com/devsecfranklin/workshop-codemash-2023/tree/workshop}{workshop branch of the repository}. The goal of having a
+separate workshop branch is an effort to de-clutter the environment, thus making it easier to follow along.
 \vspace{2mm}
 
 \justifying
@@ -95,14 +96,14 @@ use during the live session. You will be more or less on your own for installati
 opt for the golden path. That said, I encourage you to try!
 \vspace{2mm}
 
-\begin{raggedright}
-	\begin{enumerate}
-		\item Clone the Github repository from \href{https://github.com/devsecfranklin/workshop-codemash-2023}{https://github.com/devsecfranklin/workshop-codemash-2023}.
-		\item In the newly created ``workshop-codemash-2023'' directory, execute the ``bootstrap.sh'' script. Note that on Macintosh this will update your existing brew installation.
-		\item Next, run the ``./configure'' command.
-		\item Finally, run the ``make python'' command to prepare the necessary Python modules.
-	\end{enumerate}
-\end{raggedright}
+\justifying
+Once you \href{https://github.com/devsecfranklin/workshop-codemash-2023/tree/workshop}{clone the Github repository}, you should open that folder in VS Code. In the bottom right of the IDE window you should see a message similar to Figure \ref{dev-container}. Click the ``Reopen in Container'' button to proceed.
+
+\begin{figure}[ht]
+	\includegraphics[width=12cm]{images/dev-container1.png}
+	\caption{Opening the development container environment.}
+	\label{dev-container}
+\end{figure}
 \vspace{2mm}
 
 \subsection{\label{sec:acct}Set Up a Second Github Account}
