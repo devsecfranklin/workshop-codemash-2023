@@ -7,4 +7,13 @@ services:
       dockerfile: docker/Dockerfile
     container_name: cloudbot-dev
     volumes:
-      - ./:/home/franklin
+      - ./:/workspaces/workshop-codemash-2023
+  cloudbot-latex:
+    image: cloudbot-latex
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.latex
+    container_name: cloudbot-latex
+    volumes:
+      - ./:/workspaces/workshop-codemash-2023
+
