@@ -139,7 +139,7 @@ function run_autoconf() {
   echo "    $ac_ver"
 
   echo "Running autoconf..."
-  autoconf || exit 1
+  autoreconf -i || exit 1
   echo "... done with autoconf."
 }
 
@@ -174,7 +174,7 @@ function detect_os() {
     fi
 }
 
-function macos() {
+function install_macos() {
   echo -e "${CYAN}Updating brew for MacOS (this may take a while...)${NC}"
   brew cleanup
   brew upgrade
@@ -183,25 +183,12 @@ function macos() {
   # brew install libtool
   brew install automake
   brew install gawk
-  if [ "${DOCUMENTATION}" = true ]; then brew install mactex; fi
-
-  if [ ! -f "./config.status" ]; then
-    echo -e "${CYAN}Running libtool/autoconf/automake...${NC}"
-    # glibtoolize
-    run_aclocal
-    autoreconf -i
-    run_automake
-    #brew install az
-  else
-    echo -e "${CYAN}Your system is already configured. (Delete config.status to reconfigure)${NC}"
-    ./config.status
-  fi
-  echo -e "${CYAN}HINT: now type \"./configure\"${NC}"
 }
 
 function install_debian() {
+  # sudo apt install gnuplot gawk libtool psutils make autopoint
   #declare -a  Packages=( "doxygen" "gawk" "doxygen-latex" "automake" )
-  declare -a Packages=( "git" "make" "automake" )
+  declare -a Packages=( "git" "make" "automake" "libtool" )
 
   # Container package installs will fail unless you do an initial update, the upgrade is optional
   if [ "${CONTAINER}" = true ]; then
@@ -225,63 +212,39 @@ function install_debian() {
   done
 }
 
-function debian() {
-  # sudo apt install gnuplot gawk libtool psutils make autopoint
-  # run_autopoint
-  if [ ! -d "aclocal" ]; then mkdir aclocal; fi
-  run_aclocal
-  autoreconf -i
-  run_automake
-  ./configure
-  #./config.status
-}
-
-function redhat() {
-  if [ ! -f "./config.status" ]; then
-    # libtoolize
-    if [ ! -d "aclocal" ]; then mkdir aclocal; fi
-    mkdir aclocal
-    #aclocal -I config
-    run_aclocal
-    autoreconf -i
-    #automake -a -c --add-missing
-    run_automake
-    ./configure
-  else
-    ./config.status
-  fi    
+function install_redhat() {
+  # Container package installs will fail unless you do an initial update, the upgrade is optional
+  if [ "${CONTAINER}" = true ]; then
+    sudo yum update
+  fi 
 }
 
 function main() {
   check_docker
-
-  # Copy in a different configure.ac that includes documentation
-  if [ "${DOCUMENTATION}" = true ]; then cp lab/configure.ac .; fi 
-  
-  # Attempt to determine OS
   detect_os
-
-  #
   #check_installed doxygen
 
   if [ ! -d "config/m4" ]; then mkdir -p config/m4; fi
 
   if [ "${MY_OS}" == "mac" ]; then
     check_installed brew
-    macos
+    install_macos
   fi
 
   if [ "${MY_OS}" == "rh" ]; then
-    redhat
+    install_redhat
   fi
 
   if [ "${MY_OS}" == "deb" ]; then
     install_debian
-    debian
   fi
 
-  # put the configure.ac file back the way it was
-  if [ "${DOCUMENTATION}" = true ]; then git restore configure.ac; fi
+  if [ ! -d "aclocal" ]; then mkdir aclocal; fi
+  run_aclocal
+  run_autoconf
+  run_automake
+  ./configure
+  #./config.status
 }
 
 main
