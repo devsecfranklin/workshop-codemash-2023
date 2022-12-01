@@ -87,7 +87,7 @@ function main() {
   check_docker
   install_debian
   setup_gcloud
-  #setup_terraform
+  setup_terraform
 }
 
 main
