@@ -200,7 +200,7 @@ function macos() {
 }
 
 function install_debian() {
-  #declare -a  Packages=( "doxygen" "gawk" "doxygen-latex" "automake" )
+  #declare -a  Packages=( "doxygen" "gawk" "doxygen-latex" "automake" "latex-beamer" "dvipng")
   declare -a Packages=( "git" "make" "automake" )
 
   # Container package installs will fail unless you do an initial update, the upgrade is optional

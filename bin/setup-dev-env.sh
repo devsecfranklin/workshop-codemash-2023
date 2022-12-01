@@ -45,7 +45,7 @@ function check_installed() {
 }
 
 function install_debian() {
-  #declare -a  Packages=( "doxygen" "gawk" "doxygen-latex" "automake" )
+  #declare -a  Packages=( "doxygen" "gawk" "doxygen-latex" "automake" "latex-beamer" "dvipng" )
   declare -a Packages=( "curl" "vim-tiny" "unzip" )
 
   # Container package installs will fail unless you do an initial update, the upgrade is optional
