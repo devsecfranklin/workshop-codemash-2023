@@ -22,9 +22,14 @@ git clone git@github.com:devsecfranklin/workshop-codemash-2023.git
 * You should [have Docker installed according to this link](https://code.visualstudio.com/docs/devcontainers/containers#_system-requirements).
 * In the bottom right of the IDE window you should see a message like so: 
 
-![dev-container](https://github.com/devsecfranklin/workshop-codemash-2023/blob/develop/lab/images/dev-container1.png)
+![dev-container](/lab/images/dev-container1.png?raw=true "Dev container message")
 
 * Click the ``Reopen in Container'' button to proceed.
+
+This concludes the host configuration. You will also need:
+
+* A [Google Cloud account](https://cloud.google.com/free)
+* A second Github account for your bot.
 
  ## Full Documentation (work in progress)
 
