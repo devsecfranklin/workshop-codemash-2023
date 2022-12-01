@@ -5,8 +5,7 @@ ACLOCAL_AMFLAGS = -I config/m4 -I aclocal
 	@test $${CR_PAT?Push will fail. You need to export the CR_PAT token for GHCR}
 
 build: .check-env-vars
-	#docker-compose build cloudbot-dev
-	docker buildx build --platform linux/amd64 Dockerfile -t $(shell docker images -q | head -1)
+	docker-compose build cloudbot-dev
 	@echo "Tagging image:  $(shell docker images -q | head -1)"
 	docker tag $(shell docker images -q | head -1) ghcr.io/devsecfranklin/cloudbot-dev:latest
 

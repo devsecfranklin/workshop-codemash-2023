@@ -1,5 +1,15 @@
 # Docker
 
+## Fast
+
+```sh
+make build
+make latex
+make push
+```
+
+## Slow
+
 * Build dev container
 
 ```sh
