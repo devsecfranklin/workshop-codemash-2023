@@ -6,7 +6,7 @@
 # v0.4 11/10/2022 Add automake check
 # v0.5 11/15/2022 Handle Docker container builds
 
-# Author:  2730246+devsecfranklin@users.noreply.github.com 
+# Author:  devsecfranklin@duck.com
 
 #set -eu
 
@@ -241,13 +241,8 @@ function main() {
 
   if [ ! -d "aclocal" ]; then mkdir aclocal; fi
   run_aclocal
-<<<<<<< Updated upstream
-  run_autoconf
-  run_automake
-=======
   run_automake
   run_autoconf
->>>>>>> Stashed changes
   ./configure
   #./config.status
 }

@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi:latest
 
-LABEL maintainer "Franklin D <frank378@gmail.com>"
+LABEL maintainer "Franklin D <devsecfranklin@duck.com>"
 
 WORKDIR /workspace
 ENV MY_DIR /workspace
