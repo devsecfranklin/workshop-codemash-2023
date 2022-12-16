@@ -4,7 +4,7 @@
 
 # v0.1 11/18/2022 first version
 
-# Author:  2730246+devsecfranklin@users.noreply.github.com 
+# Author:  devsecfranklin@duck.com 
 
 #set -eu
 

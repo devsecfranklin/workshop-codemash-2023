@@ -1,6 +1,6 @@
 dnl Process this file with autoconf
 AC_PREREQ([2.69])
-AC_INIT(workshop-codemash-2023, 0.1, frank378@gmail.com, https://github.com/devsecfranklin/workshop-codemash-2023)
+AC_INIT(workshop-codemash-2023, 0.1, devsecfranklin@duck.com, https://github.com/devsecfranklin/workshop-codemash-2023)
 AC_CONFIG_MACRO_DIR(config/m4)
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_HEADERS(config)

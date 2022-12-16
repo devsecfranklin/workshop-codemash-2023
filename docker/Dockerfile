@@ -2,7 +2,7 @@
 
 FROM python:3.11-slim-bullseye
 
-LABEL org.opencontainers.image.authors="Franklin D <franklin@bitsmasher.net>"
+LABEL org.opencontainers.image.authors="Franklin D <devsecfranklin@duck.com>"
 LABEL org.opencontainers.image.source=https://github.com/devsecfranklin/workshop-codemash-2023
 LABEL org.opencontainers.image.description="Codemash 2023 Precompiler Workshop"
 LABEL org.opencontainers.image.licenses=MIT
