@@ -241,10 +241,16 @@ function main() {
 
   if [ ! -d "aclocal" ]; then mkdir aclocal; fi
   run_aclocal
+<<<<<<< Updated upstream
   run_autoconf
   run_automake
+=======
+  run_automake
+  run_autoconf
+>>>>>>> Stashed changes
   ./configure
   #./config.status
 }
 
 main
+ 
