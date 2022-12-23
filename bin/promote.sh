@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author : devsecfranklin@duck.com
+# Author: devsecfranklin@duck.com
 
 function promote_files() {
 declare -a my_files=( "README.md" "lab/workshop-codemash-2023.pdf" ".devcontainer" ".vscode/" "src/" "terraform/" )

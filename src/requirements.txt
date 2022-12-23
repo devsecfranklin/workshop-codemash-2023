@@ -3,3 +3,4 @@ google-cloud-secret-manager
 requests
 flask
 PyGithub
+gidgethub

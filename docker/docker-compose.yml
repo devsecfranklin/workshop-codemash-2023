@@ -16,4 +16,3 @@ services:
     container_name: cloudbot-latex
     volumes:
       - ./:/workspaces/workshop-codemash-2023
-
