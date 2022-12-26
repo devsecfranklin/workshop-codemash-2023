@@ -3,6 +3,8 @@
 [![DOI](https://zenodo.org/badge/544592682.svg)](https://zenodo.org/badge/latestdoi/544592682)
  [![LaTeX docs](https://github.com/devsecfranklin/workshop-codemash-2023/actions/workflows/latex.yml/badge.svg)](https://github.com/devsecfranklin/workshop-codemash-2023/actions/workflows/latex.yml) [![Bandit](https://github.com/devsecfranklin/workshop-codemash-2023/actions/workflows/bandit.yml/badge.svg)](https://github.com/devsecfranklin/workshop-codemash-2023/actions/workflows/bandit.yml) [![TFsec](https://github.com/devsecfranklin/workshop-codemash-2023/actions/workflows/tfsec.yml/badge.svg)](https://github.com/devsecfranklin/workshop-codemash-2023/actions/workflows/tfsec.yml)
 
+[A 6 1/2 minute video explaining the ideas here](https://www.youtube.com/watch?v=Wqn6GzwOJqs)
+
 ## Pre-requisites
 
  The easiest way to replicate the dev environment under Linux, Mac, Windows is to use
