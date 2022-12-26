@@ -8,7 +8,10 @@ router = routing.Router()
 
 ISSUE_RE = re.compile(r"(?P<kind>bpo|gh)-(?P<issue>\d+)", re.IGNORECASE)
 SKIP_ISSUE_LABEL = util.skip_label("issue")
-
+STATUS_CONTEXT = "bot/issue-number"
+# Try to keep descriptions at or below 50 characters, else GitHub's CSS will truncate it.
+SKIP_ISSUE_STATUS = util.create_status(STATUS_CONTEXT, util.StatusState.SUCCESS,
+                                       description="Issue report skipped")
 
 @router.register("pull_request", action="labeled")
 async def new_label(event, gh, *args, **kwargs):
