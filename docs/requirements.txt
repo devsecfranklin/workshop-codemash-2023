@@ -1,1 +1,2 @@
-chktex
+Pygments
+dot2tex

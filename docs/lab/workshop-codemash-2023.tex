@@ -32,7 +32,7 @@ up to the gym every day and put in the work if you want the results. Same with t
 \vspace{2mm}
 
 \justifying
-Note that this document has many clickable links included. You may miss some of these should you choose 
+Note that this document has many clickable links included. You may miss some of these should you choose
 to print a copy of this document.
 \vspace{2mm}
 
@@ -70,7 +70,7 @@ A high level overview of the learning path is as follows:
 \section{\label{sec:preparation}Getting Set Up}
 
 \justifying
-A Dockerfile that has everything you need to participate in this workshop is provided. The fastest way to get set up is to clone the project 
+A Dockerfile that has everything you need to participate in this workshop is provided. The fastest way to get set up is to clone the project
 repository from Github, then open that repository in Visual Studio Code.
 \vspace{2mm}
 
@@ -90,7 +90,7 @@ separate workshop branch is an effort to de-clutter the environment, thus making
 \vspace{2mm}
 
 \justifying
-It is possible, and perfectly acceptable, to clone the workshop files from \href{https://github.com/devsecfranklin/workshop-codemash-2023/tree/develop}{the develop branch of the workshop repository}. This 
+It is possible, and perfectly acceptable, to clone the workshop files from \href{https://github.com/devsecfranklin/workshop-codemash-2023/tree/develop}{the develop branch of the workshop repository}. This
 advanced path is only recommended for folks who already have a  decent grasp on most of the files, packages, and paradigms we will
 use during the live session. You will be more or less on your own for installation and configuration, since most folks will probably
 opt for the golden path. That said, I encourage you to try!
@@ -100,7 +100,7 @@ opt for the golden path. That said, I encourage you to try!
 Once you \href{https://github.com/devsecfranklin/workshop-codemash-2023/tree/workshop}{clone the Github repository}, you should open that folder in VS Code. In the bottom right of the IDE window you should see a message similar to Figure \ref{dev-container}. Click the ``Reopen in Container'' button to proceed.
 
 \begin{figure}[ht]
-	\includegraphics[width=12cm]{images/dev-container1.png}
+	\includegraphics[width=12cm]{../images/dev-container1.png}
 	\caption{Opening the development container environment.}
 	\label{dev-container}
 \end{figure}
@@ -131,7 +131,7 @@ Note that you can add a cool icon to the bot account\'s Github profile.
 \subsection{\label{sec:webhook}Github Webhook Configuration}
 
 \justifying
-There are three parts to configuring the webhook in Github. 
+There are three parts to configuring the webhook in Github.
 
 \justifying
 \begin{raggedright}
@@ -147,7 +147,7 @@ There are three parts to configuring the webhook in Github.
 Note that the webhook secret is different from the two Github secrets we will set in section \ref{sec:gh_secrets}.
 
 \begin{figure}[ht]
-	\includegraphics[width=12cm]{images/webhook1.png}
+	\includegraphics[width=12cm]{../images/webhook1.png}
 	\caption{Payload URL, Content type, and Webhook Secret.}
 	\label{wh1}
 \end{figure}
@@ -155,7 +155,7 @@ Note that the webhook secret is different from the two Github secrets we will se
 
 
 \begin{figure}[ht]
-	\includegraphics[width=12cm]{images/webhook2.png}
+	\includegraphics[width=12cm]{../images/webhook2.png}
 	\caption{Webhook trigger events.}
 	\label{wh2}
 \end{figure}
@@ -168,7 +168,7 @@ The image in Figure \ref{gh_secrets} shows where to set the secrets in your Gith
 \vspace{2mm}
 
 \begin{figure}[ht]
-	\includegraphics[width=12cm]{images/gh_secrets.png}
+	\includegraphics[width=12cm]{../images/gh_secrets.png}
 	\caption{Setting repository secrets.}
 	\label{gh_secrets}
 \end{figure}
@@ -226,10 +226,10 @@ The list of tools for using this Autotools configuration paradigm is show in Tab
 \begin{table}[ht]
 	\centering
 	\begin{tabular}{|l|l|}\hline
-		Tool & Description \\\hline
-		autoconf & Generates a configure script from configure.ac   \\\hline
-		automake & Generates a system-specific Makefile based on Makefile.am template    \\\hline
-		make  &   X    \\\hline
+		Tool     & Description                                                        \\\hline
+		autoconf & Generates a configure script from configure.ac                     \\\hline
+		automake & Generates a system-specific Makefile based on Makefile.am template \\\hline
+		make     & X                                                                  \\\hline
 	\end{tabular}
 	\caption{GNU tools used in this project}
 	\label{Autotools}
@@ -242,7 +242,7 @@ It illustrates the relationship between components mentioned in Table \ref{Autot
 \vspace{2mm}
 
 \begin{figure}[ht]
-	\includegraphics[width=12cm]{images/diagram.png}
+	\includegraphics[width=12cm]{../images/diagram.png}
 	\caption{A basic overview of how the main Autotools components fit together.}
 	\label{diagram}
 \end{figure}

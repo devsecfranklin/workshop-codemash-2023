@@ -1,0 +1,13 @@
+CmdLine {
+-q
+-n 1 # Command terminated with space.
+-n 8 # Wrong length of dash may have been used.
+-n 12 # Interword spacing (`\ ') should perhaps be used.
+-n 13 # Intersentence spacing (`\@') should perhaps be used.
+-n 24 # Delete this space to maintain correct pagereferences.
+-n 36 # You should put a space in front of parenthesis.
+-n 26 # You ought to remove spaces in front of punctuation
+-n 11 # You should use \ldots to achieve an ellipsis
+-n 18 # Use either `` or '' as an alternative to `"'
+-n 2 # Non-breaking space (`~') should have been used
+}

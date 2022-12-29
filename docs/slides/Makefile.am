@@ -7,5 +7,6 @@ clean:
 		fi ; \
 	done
 
+.PHONY: slides
 slides:
 	latexmk -pdf -file-line-error -interaction=nonstopmode -synctex=1 -shell-escape workshop-codemash-2023

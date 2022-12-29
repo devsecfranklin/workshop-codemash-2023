@@ -1,7 +1,7 @@
 CLOCAL_AMFLAGS = -I config/m4 -I aclocal
 ACLOCAL_AMFLAGS = -I config/m4 -I aclocal
 
-.PHONY: terraform
+.PHONY: docs python test terraform
 
 clean: ## Clean up your mess
 	rm -rf _build *.egg-info
@@ -13,6 +13,15 @@ clean: ## Clean up your mess
 		rm -rf $$trash ;\
 	fi ; \
 	done
+
+docs:
+	$(MAKE) python
+	( \
+		source _build/bin/activate; \
+		_build/bin/python -m pip install --upgrade pip; \
+		_build/bin/python -m pip install -r docs/requirements.txt; \
+	)
+	cd docs/lab/ && $(MAKE) paper && cd ../slides && $(MAKE) slides
 
 python:
 	@echo "Found Python version $(PY39)"
