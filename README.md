@@ -33,8 +33,8 @@ This concludes the host configuration. You will also need:
 * A [Google Cloud account](https://cloud.google.com/free)
 * A second Github account for your bot.
 
- ## Full Documentation (work in progress)
+## Full Documentation (work in progress)
 
  I'm still working on this PDF but the link will stay static.
 
-<font size="4">[DOWNLOAD LATEST PDF DOCUMENTATION](https://github.com/devsecfranklin/workshop-codemash-2023/blob/develop/lab/workshop-codemash-2023.pdf)</font>
+<font size="4">[DOWNLOAD LATEST PDF DOCUMENTATION](https://github.com/devsecfranklin/workshop-codemash-2023/blob/develop/docs/lab/workshop-codemash-2023.pdf)</font>
