@@ -16,7 +16,8 @@ AC_CONFIG_COMMANDS([franklin-build],
 AC_CONFIG_FILES([
     Makefile
     docker/Makefile
-    lab/Makefile
+    docs/lab/Makefile
+    docs/slides/Makefile
 ])
 
 dnl le python

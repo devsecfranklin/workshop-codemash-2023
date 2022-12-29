@@ -1,0 +1,102 @@
+% !TeX root = workshop-codemash-2023.tex
+% !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% https://orcid.org/0000-0003-4586-8500
+
+% Other possible values are: 1610, 149, 54, 43 and 32.
+% By default, it is to 128mm by 96mm(4:3)
+\documentclass[aspectratio=169]{beamer} 
+%\setbeamertemplate{headline navigation symbols}{}         % no navigation symbols
+\usetheme{Warsaw}
+\usecolortheme{seahorse}
+\usepackage[absolute,overlay]{textpos} % Text positioning
+
+
+%Information to be included in the title page:
+\title{Build a Serverless Github Bot in GCP}
+\subtitle{Find and encrypt local secrets}
+\author{Franklin Diaz}
+\institute{DE:AD:10:C5}
+\date{Tuesday January 10, 2023}
+
+\begin{document}
+
+%%% Title Slide %%%
+\frame{\titlepage}
+
+
+%\begin{frame}
+%        \frametitle{Table of Contents}
+%        \tableofcontents
+%\end{frame}
+
+% you can uncomment one of these for the whole doc, or add at the start of each section as desired                                                                            
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+\begin{frame}
+    \frametitle{Outline}
+    \begin{comment}
+    Project source files are available: \url{https://github.com/devsecfranklin/workshop-codemash-2023}
+    \end{comment}
+    \vspace{2mm}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline}
+
+    A high level overview of the learning path is as follows:
+
+    \begin{raggedright}
+        \begin{itemize}
+            \item Prerequisites
+            \item Github setup.
+            \item Set up a development environment.
+            \item Review the Python source for the bot.
+            \item Configure Terraform and deploy the bot.
+            \item Test it out.
+            \item Explore possibilities for extending the functionality.
+        \end{itemize}
+    \end{raggedright}
+    \vspace{2mm}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Setting Up}
+    \begin{itemize}
+        \item Create a repository on GitHub or other RCS.
+        \item Install the tools with script.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Finding Tokens}
+    \begin{itemize}
+        \item Scan your local machine for tokens and creds.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Saving Tokens}
+    \begin{itemize}
+        \item Encrypt the tokens and push them into RCS.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Using Tokens}
+    \begin{itemize}
+        \item Now you can use the secrets in your project without exposing them.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Considerations}
+    \begin{itemize}
+        \item You need your GPG key on the local machine to encrypt, decrypt, and use the secrets.
+    \end{itemize}
+\end{frame}
+
+\end{document}⏎
