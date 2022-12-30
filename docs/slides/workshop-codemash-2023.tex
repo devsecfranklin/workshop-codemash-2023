@@ -39,65 +39,65 @@
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
 \begin{frame}
-    \frametitle{Outline}
+	\frametitle{Outline}
 
-    A high level overview of the learning path is as follows:
+	A high level overview of the learning path is as follows:
 
-    \begin{raggedright}
-        \begin{itemize}
-            \item Prerequisites
-            \item Github setup.
-            \item Set up a development environment.
-            \item Review the Python source for the bot.
-            \item Configure Terraform and deploy the bot.
-            \item Test it out.
-            \item Explore possibilities for extending the functionality.
-        \end{itemize}
-    \end{raggedright}
-    \vspace{2mm}
+	\begin{raggedright}
+		\begin{itemize}
+			\item Prerequisites
+			\item Github setup.
+			\item Set up a development environment.
+			\item Review the Python source for the bot.
+			\item Configure Terraform and deploy the bot.
+			\item Test it out.
+			\item Explore possibilities for extending the functionality.
+		\end{itemize}
+	\end{raggedright}
+	\vspace{2mm}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Setup: VSCode}
-    VSCode (\href{https://code.visualstudio.com}{https://code.visualstudio.com})
-    \begin{itemize}
-	    \item Windows 64 bit User Installer: \href{https://prereqs.codemash.org/Files/VVSCodeUserSetup-x64-1.73.1.exe}{VSCodeUserSetup-x64-1.73.1.exe}
-	    \item Mac Universal: \href{https://prereqs.codemash.org/Files/VSCode-darwin-universal.zip}{VSCode-darwin-universal.zip}
-	    \item Linux (Debian, Ubuntu): \href{https://prereqs.codemash.org/Files/code_1.73.1-1667967334_amd64.deb}{code\_1.73.1-1667967334\_amd64.deb}
-	    \item  Linux (Red Hat, Fedora, SUSE): \href{https://prereqs.codemash.org/Files/code-1.73.1-1667967421.el7.x86_64.rpm}{code-1.73.1-1667967421.el7.x86\_64.rpm}
-    \end{itemize}
+	\frametitle{Setup: VSCode}
+	VSCode (\href{https://code.visualstudio.com}{https://code.visualstudio.com})
+	\begin{itemize}
+		\item Windows 64 bit User Installer: \href{https://prereqs.codemash.org/Files/VVSCodeUserSetup-x64-1.73.1.exe}{VSCodeUserSetup-x64-1.73.1.exe}
+		\item Mac Universal: \href{https://prereqs.codemash.org/Files/VSCode-darwin-universal.zip}{VSCode-darwin-universal.zip}
+		\item Linux (Debian, Ubuntu): \href{https://prereqs.codemash.org/Files/code_1.73.1-1667967334_amd64.deb}{code\_1.73.1-1667967334\_amd64.deb}
+		\item  Linux (Red Hat, Fedora, SUSE): \href{https://prereqs.codemash.org/Files/code-1.73.1-1667967421.el7.x86_64.rpm}{code-1.73.1-1667967421.el7.x86\_64.rpm}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Setup: git}
-		GIT (\href{https://git-scm.com/downloads}{https://git-scm.com/downloads})
-        \begin{itemize}
-        	\item Windows 32 Bit: \href{https://prereqs.codemash.org/Files/Git-2.38.1-64-bit.exe}{Git-2.38.1-64-bit.exe}
-			\item Windows 64 Bit: \href{https://prereqs.codemash.org/Files/Git-2.38.1-32-bit.exe}{Git-2.38.1-32-bit.exe}
-			\item Mac: \href{https://prereqs.codemash.org/Files/git-2.15.0-intel-universal-mavericks.dmg}{git-2.15.0-intel-universal-mavericks.dmg}
-    	\end{itemize}
+	GIT (\href{https://git-scm.com/downloads}{https://git-scm.com/downloads})
+	\begin{itemize}
+		\item Windows 32 Bit: \href{https://prereqs.codemash.org/Files/Git-2.38.1-64-bit.exe}{Git-2.38.1-64-bit.exe}
+		\item Windows 64 Bit: \href{https://prereqs.codemash.org/Files/Git-2.38.1-32-bit.exe}{Git-2.38.1-32-bit.exe}
+		\item Mac: \href{https://prereqs.codemash.org/Files/git-2.15.0-intel-universal-mavericks.dmg}{git-2.15.0-intel-universal-mavericks.dmg}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Setup: Docker Desktop}
 	Docker Desktop (\href{https://www.docker.com/}{https://www.docker.com/})
-	
-	 	\begin{itemize}
-	 		\item Windows: \href{https://prereqs.codemash.org/Files/Docker\%20Desktop\%20Installer.exe}{Docker Desktop Installer.exe}
-			\item MacOS (Intel Chip): \href{https://prereqs.codemash.org/Files/Docker.dmg}{Docker.dmg}
-			\item MacOS (M1 Chip): \href{https://prereqs.codemash.org/Files/Chip/Docker.dmg}{Docker.dmg}
-			\item Linux instructions can be found: \href{https://docs.docker.com/desktop/install/linux-install/}{here}
-	    \end{itemize}
+
+	\begin{itemize}
+		\item Windows: \href{https://prereqs.codemash.org/Files/Docker\%20Desktop\%20Installer.exe}{Docker Desktop Installer.exe}
+		\item MacOS (Intel Chip): \href{https://prereqs.codemash.org/Files/Docker.dmg}{Docker.dmg}
+		\item MacOS (M1 Chip): \href{https://prereqs.codemash.org/Files/Chip/Docker.dmg}{Docker.dmg}
+		\item Linux instructions can be found: \href{https://docs.docker.com/desktop/install/linux-install/}{here}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Resources}
 	\href{https://www.codemash.org/session-details/?id=375030}{Click here for Session Details}
 	\vspace{2mm}
-	
+
 	Project source files are available: \url{https://github.com/devsecfranklin/workshop-codemash-2023}
 	\vspace{2mm}
-	
+
 	Prerequisites are \href{https://prereqs.codemash.org/}{available at this link}.
 \end{frame}
 
@@ -105,16 +105,16 @@
 	\frametitle{Contact}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
- 		Mastodon: ``@devsecfranklin@defcon.social''
- 		\vspace{2mm}
- 	
- 		E-mail: \textbf{\href{mailto:devsecfranklin@duck.com}{devsecfranklin@duck.com}}
- 		\end{column}
-		\begin{column}{0.5\textwidth} 
-		\begin{center}
-			\includegraphics[width=0.785\textwidth]{../images/rilla.jpg}
-		\end{center}
- 		\end{column}
+			Mastodon: ``@devsecfranklin@defcon.social''
+			\vspace{2mm}
+
+			E-mail: \textbf{\href{mailto:devsecfranklin@duck.com}{devsecfranklin@duck.com}}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=0.785\textwidth]{../images/rilla.jpg}
+			\end{center}
+		\end{column}
 	\end{columns}
 \end{frame}
 
