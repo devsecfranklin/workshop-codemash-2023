@@ -16,3 +16,5 @@
 * I'm still working on this PDF but the link will stay static.
 
 <font size="6">[DOWNLOAD LATEST PDF DOCUMENTATION](https://github.com/devsecfranklin/workshop-codemash-2023/blob/develop/docs/lab/workshop-codemash-2023.pdf)</font>
+
+![Block Diagram](https://github.com/devsecfranklin/workshop-codemash-2023/blob/main/docs/images/arch_diagrams-big-block.png)
