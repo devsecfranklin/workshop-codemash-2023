@@ -15,7 +15,7 @@ git clone git@github.com:devsecfranklin/workshop-codemash-2023.git
 
 * Open the new repository clone folder in VSCode.
 * You should [have Docker installed according to this link](https://code.visualstudio.com/docs/devcontainers/containers#_system-requirements).
-* In the bottom right of the IDE window you should see a message like so: 
+* In the bottom right of the IDE window you should see a message like so:
 
 ![dev-container](/lab/images/dev-container1.png?raw=true "Dev container message")
 

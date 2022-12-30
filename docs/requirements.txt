@@ -1,2 +1,3 @@
+# These are Python modules to build the lab guide and slides in LaTeX
 Pygments
 dot2tex
