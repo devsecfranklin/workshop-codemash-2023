@@ -4,6 +4,7 @@
 
 ## PREWORK
 
+* Sign up for a free tier [Google Cloud account](https://cloud.google.com/free)
 * Install VSCode
 * Install Docker
 * Install Git

@@ -127,10 +127,12 @@
 
 \end{frame}
 
+\note[itemize]{
+	\item this is a test
+}
 
 \begin{frame}
 	\frametitle{Setup: Clone and Open the Project Repository}
-
 	\begin{itemize}
 		\item Time to clone the repository.
 		\item \href{https://github.com/devsecfranklin/workshop-codemash-2023}{Click this link for the Github repository}
@@ -149,6 +151,26 @@
 	\item this is a test
 }
 
+\begin{frame}
+	\frametitle{Google Cloud: Account Setup}
+	\begin{itemize}
+		\item \href{https://cloud.google.com/free}{Sign up for a free tier GCP account}.
+		\item Navigate to \href{https://cloud.google.com/}{https://cloud.google.com/} and make sure you have a usable project to work in.
+		\item \href{https://cloud.google.com/resource-manager/docs/creating-managing-projects}{Here is some infomration about creating projects in GCP}
+		\item Add your project name in the file ``/workspaces/workshop-codemash-2023/.envrc''
+		\item Type the command ``direnv allow .'' to reload the ENV variables.
+		\item In the dev container, run the command ``gcloud auth login'' and follow the directions there.
+		\item Verify you are connected to GCP with the command ``gcloud auth list''	
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User}
+	
+	We create a service user in GCP with limited scope of permissions.
+	
+\end{frame}
+
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
 \usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
@@ -166,6 +188,13 @@
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
 
+\begin{frame}
+	\frametitle{The Python Application}
+
+	Discuss the code for the cloud function, see how all that works.
+
+\end{frame}
+
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
 \usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
@@ -182,6 +211,19 @@
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
+\begin{frame}
+	\frametitle{The Terraform Installer}
+
+	We use Terraform to automate the Cloud Function installation.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Deploying with Terraform}
+
+	Let's do a Terraform deployment.
+
+\end{frame}
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
