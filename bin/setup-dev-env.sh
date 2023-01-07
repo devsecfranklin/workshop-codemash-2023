@@ -42,8 +42,11 @@ function check_docker() {
 function check_installed() {
   if ! command -v ${1} &> /dev/null
   then
-    echo "${1} could not be found"
-    exit
+    echo -e "${RED}${1} could not be found${NC}"
+    return 1 # false
+  else
+    echo -e "${LGREEN}Found ${1} installed.${NC}"
+    return 0 # true
   fi
 }
 
@@ -103,7 +106,7 @@ function main() {
 
   install_debian # now install all the packages listed in the array
   setup_gcloud
-  setup_terraform
+  check_installed terraform || setup_terraform
 }
 
 main
