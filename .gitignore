@@ -1,4 +1,3 @@
-*.code-workspace
 .DS_Store
 .nfs*
 
@@ -287,6 +286,7 @@ TSWLatexianTemp*
 
 Makefile
 Makefile.in
+config.in~
 configure
 configure~
 config/
