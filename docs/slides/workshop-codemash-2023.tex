@@ -157,17 +157,48 @@
 		\item \href{https://cloud.google.com/free}{Sign up for a free tier GCP account}.
 		\item Navigate to \href{https://cloud.google.com/}{https://cloud.google.com/} and make sure you have a usable project to work in.
 		\item \href{https://cloud.google.com/resource-manager/docs/creating-managing-projects}{Here is some infomration about creating projects in GCP}
-		\item Add your project name in the file ``/workspaces/workshop-codemash-2023/.envrc''
+	\end{itemize}
+\end{frame}
+
+% uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+\section{IN CLASS SETUP}
+\begin{frame}
+	\Huge \textcolor{dgreen}{IN CLASS SETUP}
+\end{frame}
+
+% you can uncomment one of these for the whole doc, or add at the start of each section as desired                                                                            
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+\begin{frame}
+	\frametitle{Google Cloud: Update Project Name and Login}
+	\begin{itemize}
+		\item Update your project name in the file ``/workspaces/workshop-codemash-2023/.envrc''
+		\item Update your project name in the file ``/workspaces/workshop-codemash-2023/src/config.ini''
 		\item Type the command ``direnv allow .'' to reload the ENV variables.
 		\item In the dev container, run the command ``gcloud auth login'' and follow the directions there.
 		\item Verify you are connected to GCP with the command ``gcloud auth list''	
-\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Google Cloud: Create Service User}
 	
 	We create a service user in GCP with limited scope of permissions.
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Secret in Secrets Mgr}
+	
+	\begin{itemize}
+		\item The Cloud Function is expecting us to create a secret named ``gh\_secret\_token''.
+	\end{itemize}
 	
 \end{frame}
 
