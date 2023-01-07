@@ -21,7 +21,7 @@ docs:
 		_build/bin/python -m pip install --upgrade pip; \
 		_build/bin/python -m pip install -r docs/requirements.txt; \
 	)
-	cd docs/lab/ && $(MAKE) paper && cd ../slides && $(MAKE) slides
+	cd docs/slides && $(MAKE) slides
 
 python:
 	@echo "Found Python version $(PY39)"
