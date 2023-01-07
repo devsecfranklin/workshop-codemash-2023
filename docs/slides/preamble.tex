@@ -3,9 +3,6 @@
 \usecolortheme{seahorse}
 \usepackage[absolute,overlay]{textpos} % Text positioning
 
-\hypersetup{pdfpagemode=FullScreen} % put the deck in presentation mode
-
-
 %%%%%%%%%%%%%%%%%%% TEXT COLOR %%%%%%%%%%%%%%%%%
 \usepackage{xcolor}
 \definecolor{olive}{rgb}{0.3, 0.4, .1}
@@ -25,3 +22,9 @@
 \author{Franklin Diaz}
 \institute{DE:AD:10:C5}
 \date{Tuesday January 10, 2023}
+
+%%%%%%%%%%%%%%%%%%% SLIDE VIEW SETTINGS %%%%%%%%%%%%%%%%%
+\hypersetup{pdfpagemode=FullScreen} % put the deck in presentation mode
+% this is to make notes mode work with pympress package
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
