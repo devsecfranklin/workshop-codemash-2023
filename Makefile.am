@@ -7,7 +7,7 @@ clean: ## Clean up your mess
 	rm -rf _build *.egg-info
 	@find . -name '*.pyc' | xargs rm -rf
 	@find . -name '__pycache__' | xargs rm -rf
-	@for trash in _build aclocal.m4 autom4te.cache config config.in config.log config.status configure configure~ libtool Makefile Makefile.in docker/cloudbot/Makefile docker/cloudbot/Makefile.in stamp-h1 terraform-install.sh; do \
+	@for trash in _build aclocal.m4 autom4te.cache config config.in config.in~ config.log config.status configure configure~ libtool Makefile Makefile.in docker/cloudbot/Makefile docker/cloudbot/Makefile.in po stamp-h1 terraform-install.sh; do \
 	if [ -f $$trash ] || [ -d $$trash ]; then \
 		echo "Removing $$trash" ;\
 		rm -rf $$trash ;\
@@ -21,7 +21,7 @@ docs:
 		_build/bin/python -m pip install --upgrade pip; \
 		_build/bin/python -m pip install -r docs/requirements.txt; \
 	)
-	cd docs/lab/ && $(MAKE) paper && cd ../slides && $(MAKE) slides
+	cd docs/slides && $(MAKE) slides
 
 python:
 	@echo "Found Python version $(PY39)"

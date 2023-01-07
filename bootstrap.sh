@@ -94,17 +94,17 @@ function run_libtoolize() {
 
       *)
           echo "You are running a newer libtool than gerbv has been tested with."
-    echo "It will probably work, but this is a warning that it may not."
+    echo -e "${YELLOW}It will probably work, but this is a warning that it may not.${NC}"
     ;;
   esac
-  echo "Running libtoolize..."
+  echo -e "${CYAN}Running libtoolize...${NC}"
   libtoolize --force --copy --automake || exit 1
 }
 
 function run_aclocal() {
   echo -e "${LBLUE}Checking aclocal version...${NC}"
   acl_ver=`aclocal --version | awk '{print $NF; exit}'`
-  echo "    $acl_ver"
+  echo -e "${CYAN}    $acl_ver${NC}"
 
   echo -e "${CYAN}Running aclocal...${NC}"
   #aclocal -I m4 $ACLOCAL_FLAGS || exit 1
@@ -113,40 +113,40 @@ function run_aclocal() {
 }
 
 function run_autoheader() {
-  echo "Checking autoheader version..."
+  echo -e "${CYAN}Checking autoheader version...${NC}"
   ah_ver=`autoheader --version | awk '{print $NF; exit}'`
-  echo "    $ah_ver"
+  echo -e "${CYAN}    $ah_ver${NC}"
 
-  echo "Running autoheader..."
+  echo -e "${CYAN}Running autoheader...${NC}"
   autoheader || exit 1
-  echo "... done with autoheader."
+  echo -e "${CYAN}... done with autoheader.${NC}"
 }
 
 function run_automake() {
-  echo "Checking automake version..."
+  echo -e "${CYAN}Checking automake version...${NC}"
   am_ver=`automake --version | awk '{print $NF; exit}'`
-  echo "    $am_ver"
+  echo -e "${CYAN}    $am_ver${NC}"
 
-  echo "Running automake..."
+  echo -e "${CYAN}Running automake...${NC}"
   automake -a -c --add-missing || exit 1
   #automake --force --copy --add-missing || exit 1
-  echo "... done with automake."
+  echo -e "${CYAN}... done with automake.${NC}"
 }
 
 function run_autoconf() {
-  echo "Checking autoconf version..."
+  echo -e "${CYAN}Checking autoconf version...${NC}"
   ac_ver=`autoconf --version | awk '{print $NF; exit}'`
-  echo "    $ac_ver"
+  echo -e "${CYAN}    $ac_ver${NC}"
 
-  echo "Running autoconf..."
+  echo -e "${CYAN}Running autoconf...${NC}"
   autoreconf -i || exit 1
-  echo "... done with autoconf."
+  echo -e "${CYAN}... done with autoconf.${NC}"
 }
 
 function check_installed() {
   if ! command -v ${1} &> /dev/null
   then
-    echo "${1} could not be found"
+    echo -e "${CYAN}${1} could not be found${NC}"
     exit
   fi
 }
@@ -240,7 +240,9 @@ function main() {
   fi
 
   if [ ! -d "aclocal" ]; then mkdir aclocal; fi
+  run_libtoolize
   run_aclocal
+  run_autoheader
   run_automake
   run_autoconf
   ./configure
