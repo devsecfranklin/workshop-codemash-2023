@@ -27,12 +27,15 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 CONTAINER=false
+APT_COMMAND="sudo apt-get"
+declare -a PACKAGES=()
 
 # Check if we are inside a docker container
 function check_docker() {
   if [ -f /.dockerenv ]; then
     echo -e "${LGREEN}Building in container...${NC}"
     CONTAINER=true
+    APT_COMMAND="apt-get"
   fi
 }
 
@@ -45,12 +48,10 @@ function check_installed() {
 }
 
 function install_debian() {
-  #declare -a  Packages=( "doxygen" "gawk" "doxygen-latex" "automake" "latex-beamer" "dvipng" )
-  declare -a Packages=( "curl" "vim-tiny" "unzip" )
-
+  echo -e "${LBLUE}Installing packages.${NC}"
   # Container package installs will fail unless you do an initial update, the upgrade is optional
   if [ "${CONTAINER}" = true ]; then
-    apt-get update && apt-get upgrade -y
+    ${APT_COMMAND} update && ${APT_COMMAND} upgrade -y
   fi
 
   for i in ${Packages[@]};
@@ -59,33 +60,48 @@ function install_debian() {
     # echo -e "${LBLUE}Checking for ${i}: ${PKG_OK}${NC}"
     if [ "" = "${PKG_OK}" ]; then
       echo -e "${LBLUE}Installing ${i} since it is not found.${NC}"
-
-      # If we are in a container there is no sudo in Debian
-      if [ "${CONTAINER}" = true ]; then
-        apt-get --yes install ${i}
-      else
-        sudo apt-get install ${i} -y
-      fi
+      ${APT_COMMAND} --yes install ${i}
     fi
   done
 }
 
 function setup_gcloud() {
-  sudo apt-get install apt-transport-https ca-certificates gnupg
-  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-  sudo apt-get update && sudo apt-get install google-cloud-cli
+  echo -e "${LBLUE}Setting up gcloud.${NC}"
+
+  if [ -f "/etc/apt/sources.list.d/google-cloud-sdk.list" ]; then rm /etc/apt/sources.list.d/google-cloud-sdk.list; fi
+
+  ${APT_COMMAND} install apt-transport-https ca-certificates gnupg
+  if [ "${CONTAINER}" = true ]; then
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+  else
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+  fi
+  ${APT_COMMAND} update && ${APT_COMMAND} --yes install google-cloud-cli
+  echo -e "${LBLUE}Google Cloud setup complete.${NC}"
 }
 
+# Latest Terraform is 1.3.7
 function setup_terraform() {
+  echo -e "${LBLUE}Setting up Terraform.${NC}"
   curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
   chmod +x terraform-install.sh
-  bash terraform-install 1.3.5
+  bash terraform-install.sh 1.3.5
+  echo -e "${LBLUE}Terraform setup complete.${NC}"
 }
 
 function main() {
   check_docker
-  install_debian
+
+  PACKAGES+=( "curl" "vim-tiny" "unzip" )
+  # only install this extra stuff if ther `.franklin` file exists
+  if [ -f ".franklin" ]; then
+    echo -e "${GREEN}Installing LaTeX packages to build documentation.${NC}"
+    declare -a  PACKAGES+=( "doxygen" "gawk" "doxygen-latex" "automake" "latex-beamer" "dvipng" "latexmk" )
+  fi
+
+  install_debian # now install all the packages listed in the array
   setup_gcloud
   setup_terraform
 }
