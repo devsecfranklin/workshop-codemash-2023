@@ -8,31 +8,10 @@
 
 % Other possible values are: 1610, 149, 54, 43 and 32.
 % By default, it is to 128mm by 96mm(4:3)
-\documentclass[aspectratio=169]{beamer} 
-%\setbeamertemplate{headline navigation symbols}{}         % no navigation symbols
-\usetheme{Warsaw}
-\usecolortheme{seahorse}
-\usepackage[absolute,overlay]{textpos} % Text positioning
+\documentclass[aspectratio=169]{beamer}
 
-%%%%%%%%%%%%%%%%%%% TEXT COLOR %%%%%%%%%%%%%%%%%
-\usepackage{xcolor}
-\definecolor{olive}{rgb}{0.3, 0.4, .1}
-\definecolor{fore}{RGB}{249,242,215}
-\definecolor{back}{RGB}{51,51,51}
-\definecolor{title}{RGB}{255,0,90}
-\definecolor{dgreen}{rgb}{0.,0.6,0.}
-\definecolor{gold}{rgb}{1.,0.84,0.}
-\definecolor{JungleGreen}{cmyk}{0.99,0,0.52,0}
-\definecolor{BlueGreen}{cmyk}{0.85,0,0.33,0}
-\definecolor{RawSienna}{cmyk}{0,0.72,1,0.45}
-\definecolor{Magenta}{cmyk}{0,1,0,0}
+\include{preamble}
 
-%Information to be included in the title page:
-\title{Build a Serverless Github Bot in GCP}
-\subtitle{}
-\author{Franklin Diaz}
-\institute{DE:AD:10:C5}
-\date{Tuesday January 10, 2023}
 
 \begin{document}
 
@@ -53,7 +32,7 @@
 
 \section{INTRODUCTION}
 \begin{frame}
- \Huge \textcolor{dgreen}{INTRODUCTION}
+	\Huge \textcolor{dgreen}{INTRODUCTION}
 \end{frame}
 
 % you can uncomment one of these for the whole doc, or add at the start of each section as desired                                                                            
@@ -65,7 +44,7 @@
 	\frametitle{Overview: Usage}
 	The big picture for operation.
 	\vspace{2mm}
-	
+
 	\includegraphics[width=0.785\textwidth]{../images/arch_diagrams-big-block.png}
 
 \end{frame}
@@ -118,6 +97,8 @@
 		\item Linux (Debian, Ubuntu): \href{https://prereqs.codemash.org/Files/code_1.73.1-1667967334_amd64.deb}{code\_1.73.1-1667967334\_amd64.deb}
 		\item  Linux (Red Hat, Fedora, SUSE): \href{https://prereqs.codemash.org/Files/code-1.73.1-1667967421.el7.x86_64.rpm}{code-1.73.1-1667967421.el7.x86\_64.rpm}
 	\end{itemize}
+	\vspace{2mm}
+	\href{https://code.visualstudio.com/docs/devcontainers/containers}{Click this link for details on using dev containers in VSCode}
 \end{frame}
 
 \begin{frame}
@@ -140,15 +121,33 @@
 		\item MacOS (M1 Chip): \href{https://prereqs.codemash.org/Files/Chip/Docker.dmg}{Docker.dmg}
 		\item Linux instructions can be found: \href{https://docs.docker.com/desktop/install/linux-install/}{here}
 	\end{itemize}
+	\vspace{2mm}
+
+	\href{https://code.visualstudio.com/docs/devcontainers/containers\#\_installation}{Click here to see Docker setup steps from Microsoft}
+
 \end{frame}
+
 
 \begin{frame}
 	\frametitle{Setup: Clone and Open the Project Repository}
 
-Time to clone the repository.
-
+	\begin{itemize}
+		\item Time to clone the repository.
+		\item \href{https://github.com/devsecfranklin/workshop-codemash-2023}{Click this link for the Github repository}
+		\item In VSCode, press F1 and enter the command ``Dev Containers: Open Folder in Container''
+		\begin{itemize}
+			\item You can also choose ``Dev Containers: Open Workspace in Container''
+			\item \href{https://code.visualstudio.com/docs/devcontainers/tutorial}{Here is the Microsoft VSCode dev containers tutorial}
+		\end{itemize}
+		\item From the top menu select ``Terminal -- New Terminal''
+		\item Now ``cd /workspaces/workshop-codemash-2023/bin'' and type ``setup-dev-env.sh''
+	\end{itemize}
+	\vspace{2mm}
 \end{frame}
 
+\note[itemize]{
+	\item this is a test
+}
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
@@ -156,7 +155,7 @@ Time to clone the repository.
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
 
-\section{Test section one}
+\section{PYTHON}
 \begin{frame}
 	\Huge \textcolor{dgreen}{PYTHON}
 \end{frame}
@@ -173,7 +172,7 @@ Time to clone the repository.
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
 
-\section{Test section one}
+\section{TERRAFORM}
 \begin{frame}
 	\Huge \textcolor{dgreen}{TERRAFORM}
 \end{frame}
@@ -182,6 +181,52 @@ Time to clone the repository.
 \usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+
+% uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+
+\section{EXTRA}
+\begin{frame}
+	\Huge \textcolor{dgreen}{EXTRA}
+\end{frame}
+
+% you can uncomment one of these for the whole doc, or add at the start of each section as desired                                                                            
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+\begin{frame}
+	\frametitle{Extra: Dockerfile and docker-compose.yml}
+
+	Check out the docker container and framework, see how all that works.
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Extra: Connect it to your GKE cluster}
+
+	I can demo this or we can try it if we have time.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Extra: GNU Autotools}
+
+	Wow we must be super bored let\'s play with GNU Autotools.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Future: Scan the PR comments for commands}
+
+	The Cloud Function could monitor the PR for certain strings, using these to trigger actions.
+
+\end{frame}
 
 \begin{frame}
 	\frametitle{Resources}
