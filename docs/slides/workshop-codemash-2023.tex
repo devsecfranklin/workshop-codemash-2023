@@ -148,10 +148,10 @@
 		\item Time to clone the repository.
 		\item \href{https://github.com/devsecfranklin/workshop-codemash-2023}{Click this link for the Github repository}
 		\item In VSCode, press F1 and enter the command ``Dev Containers: Open Folder in Container''
-		\begin{itemize}
-			\item You can also choose ``Dev Containers: Open Workspace in Container''
-			\item \href{https://code.visualstudio.com/docs/devcontainers/tutorial}{Here is the Microsoft VSCode dev containers tutorial}
-		\end{itemize}
+		      \begin{itemize}
+			      \item You can also choose ``Dev Containers: Open Workspace in Container''
+			      \item \href{https://code.visualstudio.com/docs/devcontainers/tutorial}{Here is the Microsoft VSCode dev containers tutorial}
+		      \end{itemize}
 		\item From the top menu select ``Terminal -- New Terminal''
 		\item Now ``cd /workspaces/workshop-codemash-2023/bin'' and type ``setup-dev-env.sh''
 	\end{itemize}
@@ -193,24 +193,30 @@
 		\item Update your project name in the file ``/workspaces/workshop-codemash-2023/src/config.ini''
 		\item Type the command ``direnv allow .'' to reload the ENV variables.
 		\item In the dev container, run the command ``gcloud auth login'' and follow the directions there.
-		\item Verify you are connected to GCP with the command ``gcloud auth list''	
+		\item Verify you are connected to GCP with the command ``gcloud auth list''
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Google Cloud: Create Service User}
-	
+
 	We create a service user in GCP with limited scope of permissions.
-	
+
+
+
 \end{frame}
 
 \begin{frame}
 	\frametitle{Google Cloud: Create Secret in Secrets Mgr}
-	
+
 	\begin{itemize}
 		\item The Cloud Function is expecting us to create a secret named ``gh\_secret\_token''.
+		\item Enable the Secret Manager service.
+		\item Add the secret.
 	\end{itemize}
-	
+	\begin{center}
+		\includegraphics[width=0.585\textwidth]{../images/gcp-secret.png}
+	\end{center}
 \end{frame}
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
@@ -233,7 +239,7 @@
 	\frametitle{Overview: Python Functions}
 	The big picture for the Python code files.
 	\vspace{2mm}
-	
+
 	\includegraphics[width=0.785\textwidth]{../images/arch_diagrams-python-big-block.png}
 \end{frame}
 \note[itemize]{
@@ -259,11 +265,22 @@
 
 \begin{frame}
 	\frametitle{Python: Logging}
-	
-	\begin{itemize}
-		\item Logging is set to the ``INFO'' level.
-		\item The log files show up in GCP under the cloud function.
-	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Logging is set to the ``INFO'' level.
+				\item The log files show up in GCP under the cloud function.
+			\end{itemize}
+			\begin{center}
+				\includegraphics[width=0.85\textwidth]{../images/logging.png}
+			\end{center}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=1.2\textwidth]{../images/cloud-function-logs.png}
+			\end{center}
+		\end{column}
+	\end{columns}
 \end{frame}
 \note[itemize]{
 	\item show the logging at the top of each file.
@@ -271,8 +288,9 @@
 
 \begin{frame}
 	\frametitle{Python: config.ini}
-	
+
 	\begin{itemize}
+		\item \href{https://docs.python.org/3/library/configparser.html\#module-configparser}{The configparser module is used} to make customization easier.
 		\item The Cloud Function is expecting us to create a secret named ``gh\_secret\_token''.
 	\end{itemize}
 	\vspace{2mm}
