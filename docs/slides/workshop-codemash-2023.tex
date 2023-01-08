@@ -87,8 +87,8 @@
 			\item In Class setup slides.
 			\item Review the Python source for the bot.
 			\item Configure Terraform and deploy the bot.
-			\item Test everything out on one of your repositories in Github.
-			\item Explore possibilities for extending the functionality.
+			\item (Optional) Deploy to one of your repositories in Github.
+			\item (Time permitting) Explore possibilities for extending the functionality.
 		\end{itemize}
 	\end{raggedright}
 	\vspace{2mm}
@@ -170,7 +170,6 @@
 	\end{itemize}
 	\vspace{2mm}
 \end{frame}
-
 \note[itemize]{
 	\item this is a test
 }
@@ -206,8 +205,15 @@
 
 \begin{frame}
 	\frametitle{Google Cloud: Create Service User}
-	We create a service user in GCP with limited scope of permissions.
+	\begin{itemize}
+		\item We select our root project, we click the IAM \& Admin menu, Service Accounts option, and finally, on the + Create Service Account button.
+	\end{itemize}
 \end{frame}
+\note[itemize]{
+	\item We create a service user in GCP with limited scope of permissions.
+	\item Service Accounts don’t have passwords, and cannot log in via browsers.
+	\item we use keys to login and send commands to GCP.
+}
 
 \begin{frame}
 	\frametitle{Google Cloud: Create Secret in Secrets Mgr}
