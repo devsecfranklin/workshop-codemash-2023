@@ -148,6 +148,7 @@ acs-*.bib
 *.tikz
 *-tikzDictionary
 
+*.jpg~
 # listings
 *.lol
 

@@ -13,8 +13,6 @@
 
 <font size="8">[DOWNLOAD LATEST PDF SLIDES](https://github.com/devsecfranklin/workshop-codemash-2023/blob/develop/docs/slides/workshop-codemash-2023.pdf)</font>
 
-![Block Diagram](https://github.com/devsecfranklin/workshop-codemash-2023/blob/main/docs/images/arch_diagrams-big-block.png)
-
 ## VIDEO
 
 <font size="4">[A 6 1/2 minute video explaining the big ideas](https://www.youtube.com/watch?v=Wqn6GzwOJqs)</font>
