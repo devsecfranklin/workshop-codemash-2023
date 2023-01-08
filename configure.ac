@@ -16,6 +16,7 @@ AC_CONFIG_COMMANDS([franklin-build],
 AC_CONFIG_FILES([
     Makefile
     docker/Makefile
+    docker/cloudbot/Makefile
     docs/slides/Makefile
 ])
 
