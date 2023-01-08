@@ -245,14 +245,37 @@
 \begin{frame}
 	\frametitle{The Python Application}
 
-	Discuss the code for the cloud function, see how all that works.
+	\begin{itemize}
+		\item The main function is essentially a Flask app that waits for an incoming JSON messages.
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.585\textwidth]{../images/main-function-py.png}
+	\end{center}
 
 \end{frame}
-
 \note[itemize]{
-	\item Need a diagram that shows the flow in the Python files.
+	\item Open the main.py file in VSCode.
 }
 
+\begin{frame}
+	\frametitle{Python: Logging}
+	
+	\begin{itemize}
+		\item Logging is set to the ``INFO'' level.
+		\item The log files show up in GCP under the cloud function.
+	\end{itemize}
+\end{frame}\\
+\note[itemize]{
+	\item show the logging at the top of each file.
+}
+
+\begin{frame}
+	\frametitle{Python: config.ini}
+	
+	\begin{itemize}
+		\item The Cloud Function is expecting us to create a secret named ``gh\_secret\_token''.
+	\end{itemize}	
+\end{frame}
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
