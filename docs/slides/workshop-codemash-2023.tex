@@ -22,8 +22,8 @@
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
-\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
-%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
 
 \section{INTRODUCTION}
@@ -38,11 +38,20 @@
 
 \begin{frame}
 	\frametitle{Resources}
-	\begin{itemize}
-		\item \href{https://www.codemash.org/session-details/?id=375030}{Click here for Session Details}
-		\item Project source files are available: \url{https://github.com/devsecfranklin/workshop-codemash-2023}
-		\item Prework \href{https://prereqs.codemash.org/}{available at this link}.
-	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.65\textwidth}
+			\begin{itemize}
+				\item \href{https://www.codemash.org/session-details/?id=375030}{Click here for Session Details}
+				\item Project source files are available: \url{https://github.com/devsecfranklin/workshop-codemash-2023}
+				\item Prework \href{https://prereqs.codemash.org/}{available at this link}.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.35\textwidth}
+			\begin{center}
+				\includegraphics[width=0.585\textwidth]{../images/qr-code.png}
+			\end{center}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -56,6 +65,7 @@
 \end{frame}
 \note[itemize]{
 	\item The picture is how I feel when I use these services.
+	\item mention day job, what I do there.
 }
 
 \begin{frame}
@@ -74,26 +84,35 @@
 
 
 \begin{frame}
-	\frametitle{Outline}
+	\frametitle{Outline: What will we cover?}
 	A high level overview of the learning path is as follows:
 	\begin{raggedright}
 		\begin{itemize}
-			\item Prerequisites
-			\item Github setup.
-			\item Set up a development environment.
+			\item Prework
+			\begin{itemize}
+				\item Github project repository setup.
+				\item Set up the development environment.
+				\item Set up Google Cloud account.
+			\end{itemize}
+			\item In Class setup slides.
 			\item Review the Python source for the bot.
 			\item Configure Terraform and deploy the bot.
-			\item Test it out.
+			\item Test everything out on one of your repositories in Github.
 			\item Explore possibilities for extending the functionality.
 		\end{itemize}
 	\end{raggedright}
 	\vspace{2mm}
 \end{frame}
+\note[itemize]{
+	\item Notice there are navigation links in the top of each slide. This is because I used a template and don't how to turn them off. Also, you're welcome.
+	\item The prework links are on the codemash website, as shown in a previous slide. Should be a clickable link.
+	\item it is expected that you've completed the prework before the session begins on Jan 10th. Show of hands, who finished it?
+}
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
-\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
-%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
 
 \section{PRE-WORK}
@@ -118,6 +137,9 @@
 	\vspace{2mm}
 	\href{https://code.visualstudio.com/docs/devcontainers/containers}{Click this link for details on using dev containers in VSCode}
 \end{frame}
+\note[itemize]{
+	\item Is anyone stuck on this step?
+}
 
 \begin{frame}
 	\frametitle{Setup: git}
@@ -128,6 +150,9 @@
 		\item Mac: \href{https://prereqs.codemash.org/Files/git-2.15.0-intel-universal-mavericks.dmg}{git-2.15.0-intel-universal-mavericks.dmg}
 	\end{itemize}
 \end{frame}
+\note[itemize]{
+	\item Is anyone stuck on this step?
+}
 
 \begin{frame}
 	\frametitle{Setup: Docker Desktop}
@@ -142,11 +167,9 @@
 	\vspace{2mm}
 
 	\href{https://code.visualstudio.com/docs/devcontainers/containers\#\_installation}{Click here to see Docker setup steps from Microsoft}
-
 \end{frame}
-
 \note[itemize]{
-	\item this is a test
+	\item Is anyone stuck on this step?
 }
 
 \begin{frame}
