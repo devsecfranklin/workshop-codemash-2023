@@ -49,11 +49,22 @@
 
 \end{frame}
 
+\note[itemize]{
+	\item Notice that a full working version of this project is running on the Github repository for the project.
+	\item In the first step, you push a code change to your github repository.
+	\item In step 2, a GH action triggers a call to the the cloud function in GCP.
+	\item In step 3, the cloud function makes a call to the webhook in Github.
+}
+
 \begin{frame}
 	\frametitle{Overview: Deployment}
 	The big picture for deployment.
 	\vspace{2mm}
 \end{frame}
+
+\note[itemize]{
+	\item Need a diagram that shows the flow of the application deployment.
+}
 
 \begin{frame}
 	\frametitle{Outline}
@@ -127,10 +138,12 @@
 
 \end{frame}
 
+\note[itemize]{
+	\item this is a test
+}
 
 \begin{frame}
 	\frametitle{Setup: Clone and Open the Project Repository}
-
 	\begin{itemize}
 		\item Time to clone the repository.
 		\item \href{https://github.com/devsecfranklin/workshop-codemash-2023}{Click this link for the Github repository}
@@ -149,6 +162,57 @@
 	\item this is a test
 }
 
+\begin{frame}
+	\frametitle{Google Cloud: Account Setup}
+	\begin{itemize}
+		\item \href{https://cloud.google.com/free}{Sign up for a free tier GCP account}.
+		\item Navigate to \href{https://cloud.google.com/}{https://cloud.google.com/} and make sure you have a usable project to work in.
+		\item \href{https://cloud.google.com/resource-manager/docs/creating-managing-projects}{Here is some infomration about creating projects in GCP}
+	\end{itemize}
+\end{frame}
+
+% uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+\section{IN CLASS SETUP}
+\begin{frame}
+	\Huge \textcolor{dgreen}{IN CLASS SETUP}
+\end{frame}
+
+% you can uncomment one of these for the whole doc, or add at the start of each section as desired                                                                            
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
+
+\begin{frame}
+	\frametitle{Google Cloud: Update Project Name and Login}
+	\begin{itemize}
+		\item Update your project name in the file ``/workspaces/workshop-codemash-2023/.envrc''
+		\item Update your project name in the file ``/workspaces/workshop-codemash-2023/src/config.ini''
+		\item Type the command ``direnv allow .'' to reload the ENV variables.
+		\item In the dev container, run the command ``gcloud auth login'' and follow the directions there.
+		\item Verify you are connected to GCP with the command ``gcloud auth list''	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User}
+	
+	We create a service user in GCP with limited scope of permissions.
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Secret in Secrets Mgr}
+	
+	\begin{itemize}
+		\item The Cloud Function is expecting us to create a secret named ``gh\_secret\_token''.
+	\end{itemize}
+	
+\end{frame}
+
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
 \usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
@@ -165,6 +229,53 @@
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
+\begin{frame}
+	\frametitle{Overview: Python Functions}
+	The big picture for the Python code files.
+	\vspace{2mm}
+	
+	\includegraphics[width=0.785\textwidth]{../images/arch_diagrams-python-big-block.png}
+\end{frame}
+\note[itemize]{
+	\item Note that there are three Python files.
+	\item the main.py file is called via Github action.
+	\item the other two files have functions to help us manage the pull request.
+}
+
+\begin{frame}
+	\frametitle{The Python Application}
+
+	\begin{itemize}
+		\item The main function is essentially a Flask app that waits for an incoming JSON messages.
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.585\textwidth]{../images/main-function-py.png}
+	\end{center}
+
+\end{frame}
+\note[itemize]{
+	\item Open the main.py file in VSCode.
+}
+
+\begin{frame}
+	\frametitle{Python: Logging}
+	
+	\begin{itemize}
+		\item Logging is set to the ``INFO'' level.
+		\item The log files show up in GCP under the cloud function.
+	\end{itemize}
+\end{frame}
+\note[itemize]{
+	\item show the logging at the top of each file.
+}
+
+\begin{frame}
+	\frametitle{Python: config.ini}
+	
+	\begin{itemize}
+		\item The Cloud Function is expecting us to create a secret named ``gh\_secret\_token''.
+	\end{itemize}	
+\end{frame}
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}
@@ -182,6 +293,19 @@
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/landscape.jpg}}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/tree.jpg}}
 
+\begin{frame}
+	\frametitle{The Terraform Installer}
+
+	We use Terraform to automate the Cloud Function installation.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Deploying with Terraform}
+
+	Let's do a Terraform deployment.
+
+\end{frame}
 
 % uncomment one of these for the whole doc, or add at the start of a section as desired                                                                 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../images/field.jpg}}

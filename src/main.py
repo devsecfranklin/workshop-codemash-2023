@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
 """
 Authors:      Franklin D. <devsecfranklin@duck.com>
-Description:  Helper Functions
+Description:  Main Function
 Requirements: src/requirements.txt
 Python:       Version 3.9.x
 Usage:        (From top level of repo)
