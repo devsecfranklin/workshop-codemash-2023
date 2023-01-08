@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM node:12-alpine
+FROM node:19-alpine
 
 LABEL org.opencontainers.image.authors="Franklin D <devsecfranklin@duck.com>"
 LABEL org.opencontainers.image.source=https://github.com/devsecfranklin/workshop-codemash-2023
