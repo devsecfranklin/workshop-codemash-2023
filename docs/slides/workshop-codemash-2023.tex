@@ -204,16 +204,126 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Google Cloud: Create Service User}
-	\begin{itemize}
-		\item We select our root project, we click the IAM \& Admin menu, Service Accounts option, and finally, on the + Create Service Account button.
-	\end{itemize}
+	\frametitle{Google Cloud: Create Service User (1/7)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item We select our root project, we click the IAM \& Admin menu, Service Accounts option, and finally, on the + Create Service Account button.
+				\item The information on this slide was shamelessly ripped off from \href{https://gmusumeci.medium.com/how-to-create-a-service-account-for-terraform-in-gcp-google-cloud-platform-f75a0cf918d1}{a Medium page written by Guillermo Musumeci}.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=1.0\textwidth]{../images/gcp-serv-acct1.png}
+			\end{center}
+		\end{column}
+	\end{columns}
 \end{frame}
 \note[itemize]{
 	\item absolutely 100 percent totally ripped this off from https://gmusumeci.medium.com/how-to-create-a-service-account-for-terraform-in-gcp-google-cloud-platform-f75a0cf918d1
 	\item We create a service user in GCP with limited scope of permissions.
 	\item Service Accounts don’t have passwords, and cannot log in via browsers.
 	\item we use keys to login and send commands to GCP.
+}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User (cont. 2/7)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item We enter a name and description for the Service Account and click the CREATE button.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{../images/gcp-serv-acct2.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User (cont. 3/7)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			In this step, we grant the Service Account access to the project. We will need to add the following Roles and click the CONTINUE button.
+			\begin{itemize}
+				\item Organization Administrator
+				\item Storage Admin → Full access to Google Cloud Storage
+				\item Compute Admin → Full control of Compute Engine resources (Virtual Machines)
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=0.75\textwidth]{../images/gcp-serv-acct3.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User (cont. 4/7)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			In the last step, we grant users access to the Service Account.
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=0.75\textwidth]{../images/gcp-serv-acct4.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User (cont. 5/7)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		We click on the + CREATE KEY button to generate our authentication key file. This key in JSON format will be used by Terraform to authenticate to GCP.
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=0.75\textwidth]{../images/gcp-serv-acct5.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User (cont. 6/7)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			We download the JSON file and store it in a secure folder or vault.
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=0.75\textwidth]{../images/gcp-serv-acct6.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+\note[itemize]{
+	\item quick detour of storing passwords with pass
+}
+
+\begin{frame}
+	\frametitle{Google Cloud: Create Service User (cont. 7/7)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item We click on the Done button to create the Service Account, and here is our new Service Account.
+				\item This concludes my shameless ripped off from \href{https://gmusumeci.medium.com/how-to-create-a-service-account-for-terraform-in-gcp-google-cloud-platform-f75a0cf918d1}{a Medium page written by Guillermo Musumeci}.
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=0.75\textwidth]{../images/gcp-serv-acct7.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+\note[itemize]{
+	\item end of ripp off
 }
 
 \begin{frame}
