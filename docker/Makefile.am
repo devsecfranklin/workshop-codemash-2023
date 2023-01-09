@@ -7,18 +7,11 @@ build:
 	@echo "Tagging image:  $(shell docker image ls| grep ^cloudbot-dev | awk -F '  +' '{print $$3}')"
 	docker tag $(shell docker images -q | head -1) ghcr.io/devsecfranklin/cloudbot-dev:latest
 
-latex:
-	docker-compose build cloudbot-latex
-	@echo "Size of image: $(shell docker image ls| grep ^cloudbot-latex | awk -F '  +' '{print $$5}')"
-	@echo "Tagging image:  $(shell docker image ls| grep ^cloudbot-latex | awk -F '  +' '{print $$3}')"
-	docker tag $(shell docker images -q | head -1) ghcr.io/devsecfranklin/cloudbot-latex:latest
-
 .check-env-vars:
 	@test $${CR_PAT?Push will fail. You need to export the CR_PAT token for GHCR}
 
 push: .check-env-vars
 	docker push ghcr.io/devsecfranklin/cloudbot-dev:latest
-	docker push ghcr.io/devsecfranklin/cloudbot-latex:latest
 
 run: 
 	docker run -it ghcr.io/devsecfranklin/cloudbot-dev:latest bash
