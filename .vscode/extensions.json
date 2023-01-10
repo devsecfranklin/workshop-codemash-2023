@@ -2,7 +2,7 @@
     // See http://go.microsoft.com/fwlink/?LinkId=827846
     // for the documentation about the extensions.json format
     "recommendations": [
-        //"ms-azuretools.vscode-docker", //docker
+        "ms-azuretools.vscode-docker", //docker
         "ms-vscode-remote.remote-containers", 
         "njpwerner.autodocstring", // Python Auto DocStrings
         "esbenp.prettier-vscode", // Prettier code formatter
