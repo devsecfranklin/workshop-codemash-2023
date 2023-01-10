@@ -66,8 +66,8 @@ function run_libtoolize() {
   rc=$?
   if test $rc -ne 0 ; then
       echo "Could not determine the version of libtool on your machine"
-      echo "libtool --version produced:"
-      libtool --version
+      echo "libtoolize --version produced:"
+      libtoolize --version
       exit 1
   fi
   lt_ver=`libtoolize --version | awk '{print $NF; exit}'`
@@ -183,6 +183,7 @@ function install_macos() {
   # brew install libtool
   brew install automake
   brew install gawk
+  # brew install pass # not sure if we need this
 }
 
 function install_debian() {
@@ -240,7 +241,7 @@ function main() {
   fi
 
   if [ ! -d "aclocal" ]; then mkdir aclocal; fi
-  run_libtoolize
+  if [ "$MY_OS" != "mac" ]; then run_libtoolize; fi
   run_aclocal
   run_autoheader
   run_automake
