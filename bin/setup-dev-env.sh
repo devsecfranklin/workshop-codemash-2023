@@ -54,7 +54,7 @@ function install_debian() {
   echo -e "${LBLUE}Installing packages.${NC}"
   # Container package installs will fail unless you do an initial update, the upgrade is optional
   if [ "${CONTAINER}" = true ]; then
-    ${APT_COMMAND} update && ${APT_COMMAND} upgrade -y
+    sudo ${APT_COMMAND} update && sudo ${APT_COMMAND} upgrade -y
   fi
 
   for i in ${Packages[@]};
@@ -63,7 +63,7 @@ function install_debian() {
     # echo -e "${LBLUE}Checking for ${i}: ${PKG_OK}${NC}"
     if [ "" = "${PKG_OK}" ]; then
       echo -e "${LBLUE}Installing ${i} since it is not found.${NC}"
-      ${APT_COMMAND} --yes install ${i}
+       sudo ${APT_COMMAND} --yes install ${i}
     fi
   done
 }
@@ -73,15 +73,10 @@ function setup_gcloud() {
 
   if [ -f "/etc/apt/sources.list.d/google-cloud-sdk.list" ]; then rm /etc/apt/sources.list.d/google-cloud-sdk.list; fi
 
-  ${APT_COMMAND} install apt-transport-https ca-certificates gnupg
-  if [ "${CONTAINER}" = true ]; then
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-  else
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-  fi
-  ${APT_COMMAND} update && ${APT_COMMAND} --yes install google-cloud-cli
+  sudo ${APT_COMMAND} install -y apt-transport-https ca-certificates gnupg
+  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+  sudo ${APT_COMMAND} update && sudo ${APT_COMMAND} -y install google-cloud-cli
   echo -e "${LBLUE}Google Cloud setup complete.${NC}"
 }
 
@@ -97,7 +92,7 @@ function setup_terraform() {
 function main() {
   check_docker
 
-  PACKAGES+=( "curl" "vim-tiny" "unzip" )
+  PACKAGES+=( "curl" "vim-tiny" "unzip" ./set)
   # only install this extra stuff if ther `.franklin` file exists
   if [ -f ".franklin" ]; then
     echo -e "${GREEN}Installing LaTeX packages to build documentation.${NC}"

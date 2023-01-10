@@ -18,8 +18,7 @@ COPY ./ /workspaces/workshop-codemash-2023
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install apt-utils -y && \
-    apt-get install gcc sudo -y && \
-    bash ${MY_HOME}/bootstrap.sh
+    apt-get install gcc sudo make autoconf automake libtool flex -y
 
 ##################
 # Set up my dude #
