@@ -57,7 +57,7 @@ function install_debian() {
     sudo ${APT_COMMAND} update && sudo ${APT_COMMAND} upgrade -y
   fi
 
-  for i in ${Packages[@]};
+  for i in ${PACKAGES[@]};
   do
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' ${i}|grep "install ok installed") &> /dev/null
     # echo -e "${LBLUE}Checking for ${i}: ${PKG_OK}${NC}"
@@ -71,7 +71,7 @@ function install_debian() {
 function setup_gcloud() {
   echo -e "${LBLUE}Setting up gcloud.${NC}"
 
-  if [ -f "/etc/apt/sources.list.d/google-cloud-sdk.list" ]; then rm /etc/apt/sources.list.d/google-cloud-sdk.list; fi
+  if [ -f "/etc/apt/sources.list.d/google-cloud-sdk.list" ]; then sudo rm /etc/apt/sources.list.d/google-cloud-sdk.list; fi
 
   sudo ${APT_COMMAND} install -y apt-transport-https ca-certificates gnupg
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -92,7 +92,7 @@ function setup_terraform() {
 function main() {
   check_docker
 
-  PACKAGES+=( "curl" "vim-tiny" "unzip" ./set)
+  PACKAGES+=( "curl" "vim-tiny" "unzip" "git" )
   # only install this extra stuff if ther `.franklin` file exists
   if [ -f ".franklin" ]; then
     echo -e "${GREEN}Installing LaTeX packages to build documentation.${NC}"
