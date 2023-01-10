@@ -1,5 +1,6 @@
 .DS_Store
 .nfs*
+.vscode-server
 
 # local build artifacts
 _build/
